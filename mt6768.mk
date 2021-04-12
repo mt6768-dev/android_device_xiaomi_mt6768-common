@@ -196,7 +196,7 @@ PRODUCT_COPY_FILES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.basic
+    android.hardware.usb@1.1-service.mt6768
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
