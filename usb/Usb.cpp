@@ -41,13 +41,8 @@ namespace usb {
 namespace V1_1 {
 namespace implementation {
 
-const char GOOGLE_USB_VENDOR_ID_STR[] = "18d1";
-const char GOOGLE_USBC_35_ADAPTER_UNPLUGGED_ID_STR[] = "5029";
-
 // Set by the signal handler to destroy the thread
 volatile bool destroyThread;
-
-static void checkUsbDeviceAutoSuspend(const std::string& devicePath);
 
 static int32_t readFile(const std::string &filename, std::string *contents) {
   FILE *fp;
@@ -73,7 +68,7 @@ static int32_t readFile(const std::string &filename, std::string *contents) {
 }
 
 static int32_t writeFile(const std::string &filename,
-                         const std::string &contents) {
+                         const std::string &contents) { // Might remove later
   FILE *fp;
   int ret;
 
@@ -95,7 +90,7 @@ static int32_t writeFile(const std::string &filename,
 
 std::string appendRoleNodeHelper(const std::string &portName,
                                  PortRoleType type) {
-  std::string node("/sys/class/typec/" + portName);
+  std::string node("/sys/class/dual_role_usb/" + portName); // We have /sys/class/dual_role_usb, not /sys/class/typec
 
   switch (type) {
     case PortRoleType::DATA_ROLE:
@@ -103,30 +98,27 @@ std::string appendRoleNodeHelper(const std::string &portName,
     case PortRoleType::POWER_ROLE:
       return node + "/power_role";
     case PortRoleType::MODE:
-      return node + "/port_type";
+      return node + "/mode"; // We have a separate file for mode
     default:
-      return "";
+      return node + "/mode"; // Disassembly shows no separate case for non-matches and MODE case could be removed, leaving just default, but let's keep it like that for now in case we need to change something.
   }
 }
 
 std::string convertRoletoString(PortRole role) {
   if (role.type == PortRoleType::POWER_ROLE) {
-    if (role.role == static_cast<uint32_t>(PortPowerRole::SOURCE))
-      return "source";
-    else if (role.role == static_cast<uint32_t>(PortPowerRole::SINK))
-      return "sink";
+    if (role.role == static_cast<uint32_t>(PortPowerRole::SOURCE)) return "source";
+    else if (role.role == static_cast<uint32_t>(PortPowerRole::SINK)) return "sink";
   } else if (role.type == PortRoleType::DATA_ROLE) {
     if (role.role == static_cast<uint32_t>(PortDataRole::HOST)) return "host";
-    if (role.role == static_cast<uint32_t>(PortDataRole::DEVICE))
-      return "device";
+    if (role.role == static_cast<uint32_t>(PortDataRole::DEVICE)) return "device";
   } else if (role.type == PortRoleType::MODE) {
-    if (role.role == static_cast<uint32_t>(PortMode_1_1::UFP)) return "sink";
-    if (role.role == static_cast<uint32_t>(PortMode_1_1::DFP)) return "source";
+    if (role.role == static_cast<uint32_t>(PortMode_1_1::UFP)) return "ufp"; // We probably call these 'ufp' and 'dfp', as seen in switchToDrp for example
+    if (role.role == static_cast<uint32_t>(PortMode_1_1::DFP)) return "dfp";
   }
   return "none";
 }
 
-void extractRole(std::string *roleName) {
+void extractRole(std::string *roleName) { // Might remove later.
   std::size_t first, last;
 
   first = roleName->find("[");
@@ -145,7 +137,7 @@ void switchToDrp(const std::string &portName) {
   if (filename != "") {
     fp = fopen(filename.c_str(), "w");
     if (fp != NULL) {
-      int ret = fputs("dual", fp);
+      int ret = fputs("dfp", fp); // Change dual -> dfp. Based on disassembly of stock HAL.
       fclose(fp);
       if (ret == EOF)
         ALOGE("Fatal: Error while switching back to drp");
@@ -155,61 +147,6 @@ void switchToDrp(const std::string &portName) {
   } else {
     ALOGE("Fatal: invalid node type");
   }
-}
-
-bool switchMode(const hidl_string &portName,
-                             const PortRole &newRole, struct Usb *usb) {
-  std::string filename =
-       appendRoleNodeHelper(std::string(portName.c_str()), newRole.type);
-  std::string written;
-  FILE *fp;
-  bool roleSwitch = false;
-
-  if (filename == "") {
-    ALOGE("Fatal: invalid node type");
-    return false;
-  }
-
-  fp = fopen(filename.c_str(), "w");
-  if (fp != NULL) {
-    // Hold the lock here to prevent loosing connected signals
-    // as once the file is written the partner added signal
-    // can arrive anytime.
-    pthread_mutex_lock(&usb->mPartnerLock);
-    usb->mPartnerUp = false;
-    int ret = fputs(convertRoletoString(newRole).c_str(), fp);
-    fclose(fp);
-
-    if (ret != EOF) {
-      struct timespec   to;
-      struct timespec   now;
-
-wait_again:
-      clock_gettime(CLOCK_MONOTONIC, &now);
-      to.tv_sec = now.tv_sec + PORT_TYPE_TIMEOUT;
-      to.tv_nsec = now.tv_nsec;
-
-      int err = pthread_cond_timedwait(&usb->mPartnerCV, &usb->mPartnerLock, &to);
-      // There are no uevent signals which implies role swap timed out.
-      if (err == ETIMEDOUT) {
-        ALOGI("uevents wait timedout");
-      // Partner check.
-      } else if (!usb->mPartnerUp) {
-        goto wait_again;
-      // Role switch succeeded since usb->mPartnerUp is true.
-      } else {
-        roleSwitch = true;
-      }
-    } else {
-      ALOGI("Role switch failed while wrting to file");
-    }
-    pthread_mutex_unlock(&usb->mPartnerLock);
-  }
-
-  if (!roleSwitch)
-    switchToDrp(std::string(portName.c_str()));
-
-  return roleSwitch;
 }
 
 Usb::Usb()
@@ -252,21 +189,31 @@ Return<void> Usb::switchRole(const hidl_string &portName,
 
   pthread_mutex_lock(&mRoleSwitchLock);
 
-  ALOGI("filename write: %s role:%s", filename.c_str(),
-        convertRoletoString(newRole).c_str());
+  /*
+     It looks like we have some type of loop in the stock HAL.
+     The loop starts at 0x4860 and ends at 0x4D4C in android.hardware.usb@1.1-service-mediatek from V12.0.1.0.QJOEUXM
+     We break out of the loop only if the value at W24 register is equal to zero. Before loop start, we can see that W24 is set to 0x14 = 20.
+     We can also see that before deciding to break out or restart, W24 is decremented by 1 and there is an usleep call.
+     The amount of useconds to sleep is stored in register W19. This register is set to 0xC350 = 50000 before the loop.
 
-  if (newRole.type == PortRoleType::MODE) {
-      roleSwitch = switchMode(portName, newRole, this);
-  } else {
+     We can conclude that the program attempts to write the role 20 times and waits 50000 useconds before trying again.
+  */
+  for (int i = 0; i < 20; ++i) {
+    ALOGI("filename write: %s role:%s", filename.c_str(),
+          convertRoletoString(newRole).c_str());
+
+    // We don't need to check role type and use a separate way of setting mode, as we simply have a "mode" file for doing that
+
     fp = fopen(filename.c_str(), "w");
     if (fp != NULL) {
       int ret = fputs(convertRoletoString(newRole).c_str(), fp);
       fclose(fp);
       if ((ret != EOF) && !readFile(filename, &written)) {
-        extractRole(&written);
+        // extractRole(&written);
         ALOGI("written: %s", written.c_str());
         if (written == convertRoletoString(newRole)) {
           roleSwitch = true;
+          break; // Role switched, stop retrying.
         } else {
           ALOGE("Role switch failed");
         }
@@ -276,6 +223,8 @@ Return<void> Usb::switchRole(const hidl_string &portName,
     } else {
       ALOGE("fopen failed");
     }
+
+    usleep(50000);
   }
 
   pthread_mutex_lock(&mLock);
@@ -294,35 +243,23 @@ Return<void> Usb::switchRole(const hidl_string &portName,
   return Void();
 }
 
-Status getAccessoryConnected(const std::string &portName, std::string *accessory) {
-  std::string filename =
-    "/sys/class/typec/" + portName + "-partner/accessory_mode";
-
-  if (readFile(filename, accessory)) {
-    ALOGE("getAccessoryConnected: Failed to open filesystem node: %s",
-          filename.c_str());
-    return Status::ERROR;
-  }
-
-  return Status::SUCCESS;
-}
 
 Status getCurrentRoleHelper(const std::string &portName, bool connected,
                             PortRoleType type, uint32_t *currentRole) {
   std::string filename;
   std::string roleName;
-  std::string accessory;
+  // Accessory stuff removed - stock HAL doesn't have that
 
   // Mode
 
   if (type == PortRoleType::POWER_ROLE) {
-    filename = "/sys/class/typec/" + portName + "/power_role";
+    filename = "/sys/class/dual_role_usb/" + portName + "/power_role";
     *currentRole = static_cast<uint32_t>(PortPowerRole::NONE);
   } else if (type == PortRoleType::DATA_ROLE) {
-    filename = "/sys/class/typec/" + portName + "/data_role";
+    filename = "/sys/class/dual_role_usb/" + portName + "/data_role";
     *currentRole = static_cast<uint32_t>(PortDataRole::NONE);
   } else if (type == PortRoleType::MODE) {
-    filename = "/sys/class/typec/" + portName + "/data_role";
+    filename = "/sys/class/dual_role_usb/" + portName + "/mode"; // We have a separate file for setting mode.
     *currentRole = static_cast<uint32_t>(PortMode_1_1::NONE);
   } else {
     return Status::ERROR;
@@ -330,40 +267,26 @@ Status getCurrentRoleHelper(const std::string &portName, bool connected,
 
   if (!connected) return Status::SUCCESS;
 
-  if (type == PortRoleType::MODE) {
-    if (getAccessoryConnected(portName, &accessory) != Status::SUCCESS) {
-      return Status::ERROR;
-    }
-    if (accessory == "analog_audio") {
-      *currentRole = static_cast<uint32_t>(PortMode_1_1::AUDIO_ACCESSORY);
-      return Status::SUCCESS;
-    } else if (accessory == "debug") {
-      *currentRole = static_cast<uint32_t>(PortMode_1_1::DEBUG_ACCESSORY);
-      return Status::SUCCESS;
-    }
-  }
-
   if (readFile(filename, &roleName)) {
     ALOGE("getCurrentRole: Failed to open filesystem node: %s",
           filename.c_str());
     return Status::ERROR;
   }
 
-  extractRole(&roleName);
+  // extractRole(&roleName); // Probably don't need to extract. The role names on our device are just single words
 
+  // We have simple role names and don't need to make a distinction based on role type
   if (roleName == "source") {
-    *currentRole = static_cast<uint32_t>(PortPowerRole::SOURCE);
+      *currentRole = static_cast<uint32_t>(PortPowerRole::SOURCE);
   } else if (roleName == "sink") {
-    *currentRole = static_cast<uint32_t>(PortPowerRole::SINK);
+      *currentRole = static_cast<uint32_t>(PortPowerRole::SINK);
   } else if (roleName == "host") {
-    if (type == PortRoleType::DATA_ROLE)
       *currentRole = static_cast<uint32_t>(PortDataRole::HOST);
-    else
+  } else if (roleName == "dfp") {
       *currentRole = static_cast<uint32_t>(PortMode_1_1::DFP);
   } else if (roleName == "device") {
-    if (type == PortRoleType::DATA_ROLE)
       *currentRole = static_cast<uint32_t>(PortDataRole::DEVICE);
-    else
+  } else if (roleName == "ufp") {
       *currentRole = static_cast<uint32_t>(PortMode_1_1::UFP);
   } else if (roleName != "none") {
     /* case for none has already been addressed.
@@ -378,34 +301,30 @@ Status getCurrentRoleHelper(const std::string &portName, bool connected,
 Status getTypeCPortNamesHelper(std::unordered_map<std::string, bool> *names) {
   DIR *dp;
 
-  dp = opendir("/sys/class/typec");
+  dp = opendir("/sys/class/dual_role_usb");
   if (dp != NULL) {
     struct dirent *ep;
 
     while ((ep = readdir(dp))) {
       if (ep->d_type == DT_LNK) {
-        if (std::string::npos == std::string(ep->d_name).find("-partner")) {
+        // We don't have -partner suffixes
           std::unordered_map<std::string, bool>::const_iterator portName =
               names->find(ep->d_name);
           if (portName == names->end()) {
-            names->insert({ep->d_name, false});
+            names->insert({ep->d_name, true}); // True by default - otherwise getPortStatusHelper will never say if role can be switched
           }
-        } else {
-          (*names)[std::strtok(ep->d_name, "-")] = true;
-        }
       }
     }
     closedir(dp);
     return Status::SUCCESS;
   }
 
-  ALOGE("Failed to open /sys/class/typec");
+  ALOGE("Failed to open /sys/class/dual_role_usb");
   return Status::ERROR;
 }
 
 bool canSwitchRoleHelper(const std::string &portName, PortRoleType /*type*/) {
-  std::string filename =
-      "/sys/class/typec/" + portName + "-partner/supports_usb_power_delivery";
+  std::string filename = "/sys/class/tcpc/type_c_port0/pe_ready";
   std::string supportsPD;
 
   if (!readFile(filename, &supportsPD)) {
@@ -466,14 +385,16 @@ Status getPortStatusHelper(hidl_vec<PortStatus_1_1> *currentPortStatus_1_1,
         goto done;
       }
 
-      (*currentPortStatus_1_1)[i].status.canChangeMode = true;
+      // Treat mode change like any type of role change - we have the "mode" file in our port directory.
+      (*currentPortStatus_1_1)[i].status.canChangeMode =
+          port.second ? canSwitchRoleHelper(port.first, PortRoleType::MODE)
+                      : false;
       (*currentPortStatus_1_1)[i].status.canChangeDataRole =
           port.second ? canSwitchRoleHelper(port.first, PortRoleType::DATA_ROLE)
                       : false;
       (*currentPortStatus_1_1)[i].status.canChangePowerRole =
-          port.second
-              ? canSwitchRoleHelper(port.first, PortRoleType::POWER_ROLE)
-              : false;
+          port.second ? canSwitchRoleHelper(port.first, PortRoleType::POWER_ROLE)
+                      : false;
 
       ALOGI("connected:%d canChangeMode:%d canChagedata:%d canChangePower:%d",
             port.second, (*currentPortStatus_1_1)[i].status.canChangeMode,
@@ -548,14 +469,8 @@ static void uevent_event(uint32_t /*epevents*/, struct data *payload) {
   cp = msg;
 
   while (*cp) {
-    std::cmatch match;
-    if (std::regex_match(cp, std::regex("(add)(.*)(-partner)"))) {
-       ALOGI("partner added");
-       pthread_mutex_lock(&payload->usb->mPartnerLock);
-       payload->usb->mPartnerUp = true;
-       pthread_cond_signal(&payload->usb->mPartnerCV);
-       pthread_mutex_unlock(&payload->usb->mPartnerLock);
-    } else if (!strncmp(cp, "DEVTYPE=typec_", strlen("DEVTYPE=typec_"))) {
+    // Removed regex matching for -partner, as we don't seem to have that in the stock HAL and in /sys/class/dual_role_usb.
+    if (!strncmp(cp, "SUBSYSTEM=dual_role_usb", strlen("SUBSYSTEM=dual_role_usb"))) { // Stock HAL looks for dual_role_usb, and it checks the SUBSYSTEM instead of DEVNAME. 0x62D4 in android.hardware.usb@1.1-service-mediatek from V12.0.1.0.QJOEUXM
       hidl_vec<PortStatus_1_1> currentPortStatus_1_1;
       ALOGI("uevent received %s", cp);
       pthread_mutex_lock(&payload->usb->mLock);
@@ -593,9 +508,8 @@ static void uevent_event(uint32_t /*epevents*/, struct data *payload) {
       //Role switch is not in progress and port is in disconnected state
       if (!pthread_mutex_trylock(&payload->usb->mRoleSwitchLock)) {
         for (unsigned long i = 0; i < currentPortStatus_1_1.size(); i++) {
-          DIR *dp = opendir(std::string("/sys/class/typec/"
-              + std::string(currentPortStatus_1_1[i].status.portName.c_str())
-              + "-partner").c_str());
+          DIR *dp = opendir(std::string("/sys/class/dual_role_usb/"
+              + std::string(currentPortStatus_1_1[i].status.portName.c_str())).c_str()); // Stock HAL did not append -partner. Based on disassembly - 0x65E0 in android.hardware.usb@1.1-service-mediatek from V12.0.1.0.QJOEUXM
           if (dp == NULL) {
               //PortRole role = {.role = static_cast<uint32_t>(PortMode::UFP)};
               switchToDrp(currentPortStatus_1_1[i].status.portName);
@@ -606,14 +520,7 @@ static void uevent_event(uint32_t /*epevents*/, struct data *payload) {
         pthread_mutex_unlock(&payload->usb->mRoleSwitchLock);
       }
       break;
-    } else if (std::regex_match(cp, match,
-          std::regex("add@(/devices/soc/a800000\\.ssusb/a800000\\.dwc3/xhci-hcd\\.0\\.auto/"
-                     "usb\\d/\\d-\\d)/.*"))) {
-      if (match.size() == 2) {
-        std::csub_match submatch = match[1];
-        checkUsbDeviceAutoSuspend("/sys" +  submatch.str());
-      }
-    }
+    } // Removed autosuspend regex match stuff - we don't even have the path that regex was looking for on a live device, and there are no mentions of auto suspend stuff in strings from the stock HAL whatsoever. The functions related to auto suspend afterwards have been nuked too.
 
     /* advance to after the next \0 */
     while (*cp++) {}
@@ -743,44 +650,6 @@ Return<void> Usb::setCallback(const sp<V1_0::IUsbCallback> &callback) {
 
   pthread_mutex_unlock(&mLock);
   return Void();
-}
-
-/*
- * whitelisting USB device idProduct and idVendor to allow auto suspend.
- */
-static bool canProductAutoSuspend(const std::string &deviceIdVendor,
-    const std::string &deviceIdProduct) {
-  if (deviceIdVendor == GOOGLE_USB_VENDOR_ID_STR &&
-      deviceIdProduct == GOOGLE_USBC_35_ADAPTER_UNPLUGGED_ID_STR) {
-    return true;
-  }
-  return false;
-}
-
-static bool canUsbDeviceAutoSuspend(const std::string &devicePath) {
-  std::string deviceIdVendor;
-  std::string deviceIdProduct;
-  readFile(devicePath + "/idVendor", &deviceIdVendor);
-  readFile(devicePath + "/idProduct", &deviceIdProduct);
-
-  // deviceIdVendor and deviceIdProduct will be empty strings if readFile fails
-  return canProductAutoSuspend(deviceIdVendor, deviceIdProduct);
-}
-
-/*
- * function to consume USB device plugin events (on receiving a
- * USB device path string), and enable autosupend on the USB device if
- * necessary.
- */
-void checkUsbDeviceAutoSuspend(const std::string& devicePath) {
-  /*
-   * Currently we only actively enable devices that should be autosuspended, and leave others
-   * to the defualt.
-   */
-  if (canUsbDeviceAutoSuspend(devicePath)) {
-    ALOGI("auto suspend usb device %s", devicePath.c_str());
-    writeFile(devicePath + "/power/control", "auto");
-  }
 }
 
 }  // namespace implementation
