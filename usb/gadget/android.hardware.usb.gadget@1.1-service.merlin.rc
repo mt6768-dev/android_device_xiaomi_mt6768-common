@@ -1,0 +1,7 @@
+service vendor.usb-gadget-hal-1-1 /vendor/bin/hw/android.hardware.usb.gadget@1.1-service.merlin
+    interface android.hardware.usb.gadget@1.0::IUsbGadget default
+    interface android.hardware.usb.gadget@1.1::IUsbGadget default
+    class hal
+    user root
+    group root system shell mtp
+    capabilities
