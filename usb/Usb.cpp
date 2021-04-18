@@ -249,7 +249,6 @@ Status getCurrentRoleHelper(const std::string &portName, bool connected,
   std::string filename;
   std::string roleName;
   // Accessory stuff removed - stock HAL doesn't have that
-
   // Mode
 
   if (type == PortRoleType::POWER_ROLE) {
@@ -367,6 +366,15 @@ Status getPortStatusHelper(hidl_vec<PortStatus_1_1> *currentPortStatus_1_1,
 
       if (getCurrentRoleHelper(port.first, port.second, PortRoleType::DATA_ROLE,
                                &currentRole) == Status::SUCCESS) {
+        /* HACK: Our device has broken roles: they appear to be permanently set
+           to NONE and don't respond to configfs writes. This causes Android to
+           not see the USB port as connected, breaking the USB settings.
+
+           To get USB preferences to work, we have to spoof some roles. */
+        if (port.second == true && currentRole == static_cast<uint32_t>(PortDataRole::NONE)) {
+          currentRole = static_cast<uint32_t>(PortDataRole::DEVICE);
+        }
+
         (*currentPortStatus_1_1)[i].status.currentDataRole =
             static_cast<PortDataRole>(currentRole);
       } else {
@@ -376,6 +384,11 @@ Status getPortStatusHelper(hidl_vec<PortStatus_1_1> *currentPortStatus_1_1,
 
       if (getCurrentRoleHelper(port.first, port.second, PortRoleType::MODE,
                                &currentRole) == Status::SUCCESS) {
+        // HACK: see above
+        if (port.second == true && currentRole == static_cast<uint32_t>(PortMode_1_1::NONE)) {
+          currentRole = static_cast<uint32_t>(PortMode_1_1::UFP);
+        }
+
         (*currentPortStatus_1_1)[i].currentMode =
             static_cast<PortMode_1_1>(currentRole);
         (*currentPortStatus_1_1)[i].status.currentMode =
