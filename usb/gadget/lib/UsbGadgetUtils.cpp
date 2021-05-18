@@ -55,6 +55,9 @@ int linkFunction(const char* function, int index) {
 
     sprintf(functionPath, "%s%s", FUNCTIONS_PATH, function);
     sprintf(link, "%s%d", FUNCTION_PATH, index);
+    if (strcmp(function, "rndis.gs4") == 0) {
+        mkdir(functionPath, 0755);
+    }
     if (symlink(functionPath, link)) {
         ALOGE("Cannot create symlink %s -> %s errno:%d", link, functionPath, errno);
         return -1;
