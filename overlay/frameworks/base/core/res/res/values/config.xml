@@ -398,7 +398,7 @@
       <item>/apex/com.android.art/javalib/core-oj.jar</item>
       <item>/apex/com.android.art/javalib/core-libart.jar</item>
       <item>/product/priv-app/SystemUI/SystemUI.apk</item>
-      <item>/system/lib64/libsurfaceflinger.so</item>
+      <item>/system/bin/surfaceflinger</item>
       <item>/system/lib64/libRS.so</item>
       <item>/system/lib64/libRSCpuRef.so</item>
       <item>/system/lib64/libRSDriver.so</item>
