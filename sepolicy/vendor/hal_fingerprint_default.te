@@ -1,0 +1,13 @@
+# Allow fingerprint HAL to read and write fingerprint node
+allow hal_fingerprint_default vendor_fingerprint_device:chr_file rw_file_perms;
+
+# Allow fingerprint HAL to setup fingerprint database files
+allow hal_fingerprint_default vendor_fingerprint_data_file:dir rw_dir_perms;
+allow hal_fingerprint_default vendor_fingerprint_data_file:file create_file_perms;
+
+# Create fingerprint HAL entrypoint
+allow hal_fingerprint_default hal_fingerprint_default_exec:file entrypoint;
+
+# Allow fingerprint HAL to get and set its props
+get_prop(hal_fingerprint_default, vendor_fingerprint_prop)
+set_prop(hal_fingerprint_default, vendor_fingerprint_prop)
