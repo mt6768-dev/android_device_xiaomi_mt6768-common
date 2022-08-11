@@ -1,0 +1,3 @@
+# Grant read perms to hal_light_default for sysfs_leds
+allow hal_light_default sysfs_leds:file rw_file_perms;
+r_dir_file(hal_light_default, sysfs_leds)

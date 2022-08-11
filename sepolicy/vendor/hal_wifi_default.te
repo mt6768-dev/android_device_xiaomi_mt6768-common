@@ -1,0 +1,5 @@
+# Set fw prop
+set_prop(hal_wifi_default, vendor_mtk_wifi_hal_prop)
+
+# Get hotspot prop
+get_prop(hal_wifi_default, vendor_mtk_wifi_hotspot_prop)

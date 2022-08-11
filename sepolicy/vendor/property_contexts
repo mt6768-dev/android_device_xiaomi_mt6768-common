@@ -1,0 +1,18 @@
+# Audio
+audio.adm.buffering.ms                                  u:object_r:vendor_mtk_audiohal_prop:s0
+audio_hal.period_multiplier                             u:object_r:vendor_mtk_audiohal_prop:s0
+vendor.audio.spkcal.copy.inhal                          u:object_r:vendor_mtk_audiohal_prop:s0
+
+# Camera
+vendor.camera.sensor.                                   u:object_r:vendor_mtk_camera_prop:s0
+persist.vendor.camera.                                  u:object_r:vendor_mtk_camera_prop:s0
+demo.hole                                               u:object_r:vendor_mtk_camera_prop:s0
+demo.near                                               u:object_r:vendor_mtk_camera_prop:s0
+demo.far                                                u:object_r:vendor_mtk_camera_prop:s0
+demo.fb                                                 u:object_r:vendor_mtk_camera_prop:s0
+
+# Fingerprint
+gf.debug.dump_bigdata_data                              u:object_r:vendor_fingerprint_prop:s0
+persist.sys.fp.goodix.                                  u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.sys.fp.                                  u:object_r:vendor_fingerprint_prop:s0
+vendor.fps_hal.                                         u:object_r:vendor_fingerprint_prop:s0
