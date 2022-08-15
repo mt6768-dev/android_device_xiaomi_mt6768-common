@@ -2,6 +2,10 @@
 genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds 					u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/leds-mt65xx/leds/lcd-backlight                           					u:object_r:sysfs_leds:s0
 
+# Performance
+genfscon proc /sys/vm/dirty_writeback_centisecs      										u:object_r:proc_vm_dirty:s0
+genfscon proc /sys/kernel/sched_stune_task_threshold 										u:object_r:proc_sched_stune:s0
+
 # Wakeup (https://lkml.org/lkml/2019/8/6/1275)
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt6358-rtc/wakeup 					u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt635x-auxadc/wakeup 				u:object_r:sysfs_wakeup:s0
