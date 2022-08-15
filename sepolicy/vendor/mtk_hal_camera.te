@@ -1,0 +1,1 @@
+allow mtk_hal_camera persist_data_file:dir { search };
