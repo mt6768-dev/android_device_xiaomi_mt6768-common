@@ -50,7 +50,6 @@ vendor/lib/libaudio_param_parser-vnd.so
 vendor/lib/libaurisysdemo.so
 vendor/lib/libbessound_hd_mtk_vendor.so
 vendor/lib/soundfx/libaudiopreprocessing_mtk.so
-vendor/lib/hw/android.hardware.audio@6.0-impl-mediatek.so
 vendor/lib64/libaudiocomponentenginec.so
 vendor/lib64/libaudiocomponentengine_vendor.so
 vendor/lib64/libaudiodcrflt_vendor.so
@@ -77,8 +76,6 @@ vendor/bin/audiocmdservice_atci
 vendor/etc/init/audiocmdservice_atci.rc
 vendor/lib/vendor.mediatek.hardware.audio@6.1.so
 vendor/lib64/vendor.mediatek.hardware.audio@6.1.so
-vendor/bin/hw/android.hardware.audio.service.mediatek
-vendor/etc/init/android.hardware.audio.service.mediatek.rc
 vendor/etc/aurisys_config.xml
 vendor/etc/aurisys_param/Speech_AudioParam.xml
 vendor/etc/audio_param/AudioParamOptions.xml
