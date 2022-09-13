@@ -1,0 +1,101 @@
+# 1 "vendor/mediatek/proprietary/hardware/fstab/mt6768/fstab.in.mt6768"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 341 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "vendor/mediatek/proprietary/hardware/fstab/mt6768/fstab.in.mt6768" 2
+# 144 "vendor/mediatek/proprietary/hardware/fstab/mt6768/fstab.in.mt6768"
+system /system ext4 ro wait,,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+
+vendor /vendor ext4 ro wait,,avb,logical,first_stage_mount
+
+
+product /product ext4 ro wait,,avb,logical,first_stage_mount
+
+
+
+
+
+
+/dev/block/platform/bootdevice/by-name/md_udc /metadata ext4 noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
+
+/dev/block/platform/bootdevice/by-name/userdata /data ext4 noatime,nosuid,nodev,noauto_da_alloc,barrier=0,errors=panic,inlinecrypt wait,check,formattable,quota,latemount,resize,reservedsize=128m,checkpoint=block,fileencryption=aes-256-xts:aes-256-cts:v1
+
+/dev/block/platform/bootdevice/by-name/cache /cache ext4 noatime,nosuid,nodev,noauto_da_alloc,discard wait,check,formattable
+
+/dev/block/platform/bootdevice/by-name/protect1 /mnt/vendor/protect_f ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
+/dev/block/platform/bootdevice/by-name/protect2 /mnt/vendor/protect_s ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
+/dev/block/platform/bootdevice/by-name/nvdata /mnt/vendor/nvdata ext4 noatime,nosuid,nodev,noauto_da_alloc,discard wait,check,formattable
+/dev/block/platform/bootdevice/by-name/nvcfg /mnt/vendor/nvcfg ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
+
+
+/dev/block/platform/bootdevice/by-name/persist /mnt/vendor/persist ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
+
+
+/devices/platform/externdevice* auto auto defaults voldmanaged=sdcard1:auto,encryptable=userdata
+/devices/platform/mt_usb* auto vfat defaults voldmanaged=sdcard1:auto,encryptable=userdata
+
+/dev/block/platform/bootdevice/by-name/frp /persistent emmc defaults defaults
+
+/dev/block/platform/bootdevice/by-name/nvram /nvram emmc defaults defaults
+/dev/block/platform/bootdevice/by-name/proinfo /proinfo emmc defaults defaults
+/dev/block/platform/bootdevice/by-name/lk /bootloader emmc defaults defaults
+/dev/block/platform/bootdevice/by-name/lk2 /bootloader2 emmc defaults defaults
+/dev/block/platform/bootdevice/by-name/misc /misc emmc defaults defaults
+/dev/block/platform/bootdevice/by-name/para /para emmc defaults defaults
+
+
+/dev/block/platform/bootdevice/by-name/recovery /recovery emmc defaults first_stage_mount,nofail,
+
+/dev/block/platform/bootdevice/by-name/boot /boot emmc defaults first_stage_mount,nofail,
+
+
+
+
+
+/dev/block/platform/bootdevice/by-name/vbmeta_vendor /vbmeta_vendor emmc defaults first_stage_mount,nofail,
+/dev/block/platform/bootdevice/by-name/vbmeta_system /vbmeta_system emmc defaults first_stage_mount,nofail,,avb=vbmeta
+
+/dev/block/platform/bootdevice/by-name/logo /logo emmc defaults defaults
+/dev/block/platform/bootdevice/by-name/expdb /expdb emmc defaults defaults
+/dev/block/platform/bootdevice/by-name/seccfg /seccfg emmc defaults defaults
+
+/dev/block/platform/bootdevice/by-name/tee1 /tee1 emmc defaults defaults
+/dev/block/platform/bootdevice/by-name/tee2 /tee2 emmc defaults defaults
+
+
+/dev/block/platform/bootdevice/by-name/scp1 /scp1 emmc defaults defaults
+/dev/block/platform/bootdevice/by-name/scp2 /scp2 emmc defaults defaults
+
+
+/dev/block/platform/bootdevice/by-name/sspm_1 /sspm_1 emmc defaults defaults
+/dev/block/platform/bootdevice/by-name/sspm_2 /sspm_2 emmc defaults defaults
+
+
+
+
+/dev/block/platform/bootdevice/by-name/md1img /md1img emmc defaults defaults
+/dev/block/platform/bootdevice/by-name/md1dsp /md1dsp emmc defaults defaults
+
+
+
+
+
+/dev/block/platform/bootdevice/by-name/gz1 /gz1 emmc defaults defaults
+/dev/block/platform/bootdevice/by-name/gz2 /gz2 emmc defaults defaults
+
+/dev/block/platform/bootdevice/by-name/spmfw /spmfw emmc defaults defaults
+
+
+
+
+/dev/block/platform/bootdevice/by-name/boot_para /boot_para emmc defaults defaults
+
+/dev/block/platform/bootdevice/by-name/dtbo /dtbo emmc defaults defaults
+
+
+/dev/block/platform/bootdevice/by-name/otp /otp emmc defaults defaults
+
+
+/dev/block/platform/bootdevice/by-name/vbmeta /vbmeta emmc defaults defaults

@@ -98,6 +98,17 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
     android.hardware.power-service-mediatek
 
+# Rootdir
+PRODUCT_PACKAGES += \
+    fstab.mt6768 \
+    init.ago.rc \
+    init.connectivity.rc \
+    init.modem.rc \
+    init.mt6768.rc \
+    init.mt6768.usb.rc \
+    init.sensor_1_0.rc \
+    ueventd.mtk.rc
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
