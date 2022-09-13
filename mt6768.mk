@@ -79,6 +79,10 @@ PRODUCT_PACKAGES += \
 # Overlays
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power-service-mediatek
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)

@@ -1004,12 +1004,12 @@ vendor/etc/init/dmc_core.rc
 
 # Power
 vendor/lib/libapmonitor_vendor.so
-vendor/lib/libpowerhal.so
+-vendor/lib/libpowerhal.so
 vendor/lib/libpowerhalwrap_vendor.so
 vendor/lib/libperfctl_vendor.so
 vendor/lib/libmmprofile.so
 vendor/lib64/libapmonitor_vendor.so
-vendor/lib64/libpowerhal.so
+-vendor/lib64/libpowerhal.so
 vendor/lib64/libpowerhalwrap_vendor.so
 vendor/lib64/libmmprofile.so
 vendor/lib64/libperfctl_vendor.so
@@ -1034,7 +1034,6 @@ vendor/lib/hw/vendor.mediatek.hardware.mtkpower@1.1-impl.so
 vendor/lib64/hw/vendor.mediatek.hardware.mtkpower@1.1-impl.so
 vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-init.rc
 vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-service.rc
-vendor/lib64/android.hardware.power-service-mediatek.so
 vendor/etc/init/md_monitor.rc
 
 # Radio
