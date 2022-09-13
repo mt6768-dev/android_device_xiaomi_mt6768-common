@@ -51,6 +51,10 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.2.vendor \
     android.hardware.drm@1.3.vendor
 
+# fastbootd
+PRODUCT_PACKAGES += \
+    fastbootd
+
 # Overlays
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
