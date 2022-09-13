@@ -70,6 +70,12 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss.measurement_corrections@1.1.vendor \
     android.hardware.gnss.visibility_control@1.0.vendor
 
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-impl.recovery \
+    android.hardware.health@2.1-service
+
 # Overlays
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
