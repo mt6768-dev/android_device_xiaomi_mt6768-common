@@ -1112,8 +1112,6 @@ vendor/etc/init/networksetting.rc
 # Sensors
 vendor/lib/libakm.so
 vendor/lib/libhwm.so
-vendor/lib/libsensorndkbridge.so
-vendor/lib64/libsensorndkbridge.so
 vendor/lib64/libksensor.so
 vendor/lib64/libhwm.so
 vendor/bin/hw/android.hardware.sensors@2.0-service-mediatek

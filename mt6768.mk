@@ -119,6 +119,10 @@ PRODUCT_PACKAGES += \
     init.sensor_1_0.rc \
     ueventd.mtk.rc
 
+# Sensors
+PRODUCT_PACKAGES += \
+    libsensorndkbridge
+
 # Shims
 PRODUCT_PACKAGES += \
     libshim_audio
