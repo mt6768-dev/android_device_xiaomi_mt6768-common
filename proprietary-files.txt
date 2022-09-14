@@ -800,20 +800,11 @@ vendor/lib64/hw/libSoftGatekeeper.so
 vendor/lib64/hw/gatekeeper.beanpod.so
 
 # Keymaster
-vendor/lib64/libkeymaster4.so
-vendor/lib64/libkeymaster4support.so
-vendor/lib64/libkeymaster_messages.so
-vendor/lib64/libkeymaster_portable.so
-vendor/lib64/libkeystore-engine-wifi-hidl.so
-vendor/lib64/libpuresoftkeymasterdevice.so
-vendor/lib64/libkeystore-wifi-hidl.so
 vendor/lib64/liburee_meta_drmkeyinstall.so
 vendor/lib64/libkmsetkey.so
 vendor/lib64/libwvkeybox.so
 vendor/lib64/libwvkeyboxext.so
-vendor/lib64/libsoft_attestation_cert.so
 vendor/lib64/hw/kmsetkey.beanpod.so
-vendor/lib/libkeystore-wifi-hidl.so
 vendor/lib/libwvkeybox.so
 vendor/lib/libwvkeyboxext.so
 vendor/lib/liburee_meta_drmkeyinstall.so
