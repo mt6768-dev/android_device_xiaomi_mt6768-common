@@ -68,6 +68,10 @@ TARGET_BOARD_PLATFORM := mt6768
 # Power
 TARGET_POWERHAL_AIDL_VERSION := 1
 
+# Properties
+TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
+TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
+
 # Recovery
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.mt6768
 
