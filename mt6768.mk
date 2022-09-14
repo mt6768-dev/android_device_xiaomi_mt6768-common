@@ -87,6 +87,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0.vendor
 
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light-service.mt6768
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service

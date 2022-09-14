@@ -1,0 +1,6 @@
+service vendor.light-default /vendor/bin/hw/android.hardware.light-service.mt6768
+    class hal
+    user system
+    group system
+    # shutting off lights while powering-off
+    shutdown critical
