@@ -1,24 +1,12 @@
 # Unpinned blobs from merlin-user 11 RP1A.200720.011 V12.5.4.0.RJOMIXM release-keys
 
 # AEE
-vendor/bin/aeev
-vendor/bin/aee_aedv
-vendor/bin/aee_aedv64
-vendor/bin/aee_archivev
-vendor/bin/aee_dumpstatev
-vendor/etc/aee-config
-vendor/etc/init/aee_aedv.rc
-vendor/etc/init/aee_aedv64.rc
 vendor/lib/libaedv.so
 vendor/lib/libladder.so
 vendor/lib/libudf.so
 vendor/lib64/libaedv.so
 vendor/lib64/libladder.so
 vendor/lib64/libudf.so
-vendor/lib64/vendor.mediatek.hardware.aee@1.0.so
-vendor/lib64/vendor.mediatek.hardware.log@1.0.so
-vendor/bin/hw/vendor.mediatek.hardware.aee@1.0-service
-vendor/etc/init/vendor.mediatek.hardware.aee@1.0-service.rc
 
 # AAL
 vendor/lib/libaalservice.so
@@ -1236,7 +1224,6 @@ vendor/etc/Conf_MultipleTest.ini
 vendor/etc/factory.ini
 vendor/etc/fstb.cfg
 vendor/etc/init/bootperf.rc
-vendor/etc/init/loghidlvendorservice.rc
 vendor/etc/MNL_Config.xml
 
 # TEE
