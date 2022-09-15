@@ -1,0 +1,423 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+/*
+** Copyright 2009, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds.  Do not translate.
+     NOTE: The naming convention is "config_camelCaseValue". Some legacy
+     entries do not follow the convention, but all new entries should. -->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- NOTE: The telephony module is no longer reading the configuration below for available
+         APN types.  The set of APN types and relevant settings are specified within the telephony
+         module and are non-configurable.  Whether or not data connectivity over a cellular network
+         is available at all is controlled by the flag: config_moble_data_capable. -->
+    <string-array name="networkAttributes">
+        <item>wifi,1,1,1,-1,true</item>
+        <item>mobile,0,0,0,-1,true</item>
+        <item>mobile_mms,2,0,2,300000,true</item>
+        <item>mobile_supl,3,0,2,60000,true</item>
+        <item>mobile_dun,4,0,2,60000,true</item>
+        <item>mobile_hipri,5,0,3,60000,true</item>
+        <item>mobile_fota,10,0,2,60000,true</item>
+        <item>mobile_ims,11,0,-1,-1,true</item>
+        <item>mobile_cbs,12,0,2,60000,true</item>
+        <item>bluetooth,7,7,2,-1,true</item>
+        <item>ethernet,9,9,4,-1,true</item>
+        <item>wifi_p2p,13,1,0,-1,true</item>
+        <item>mobile_ia,14,0,2,-1,true</item>
+        <item>mobile_emergency,15,0,2,-1,true</item>
+        <item>mobile_dm,20,0,3,60000,true</item>
+        <item>mobile_wap,21,0,3,60000,true</item>
+        <item>mobile_net,22,0,3,60000,true</item>
+        <item>mobile_cmmail,23,0,3,60000,true</item>
+        <item>mobile_rcse,24,0,3,60000,true</item>
+        <item>mobile_xcap,25,0,3,60000,true</item>
+        <item>mobile_rcs,26,0,3,60000,true</item>
+        <item>mobile_bip,27,0,3,60000,true</item>
+        <item>mobile_vsim,28,0,-1,60000,true</item>
+        <item>mobile_preempt,29,0,9,60000,true</item>
+        <item>wifi_slave,40,1,0,-1,true</item>
+    </string-array>
+
+    <!-- An Array of "[ConnectivityManager connectionType],
+                      [# simultaneous connection types]"  -->
+    <string-array name="radioAttributes">
+      <item>1,1</item>
+      <item>0,1</item>
+      <item>7,1</item>
+      <item>9,1</item>
+    </string-array>
+
+    <!-- Flag indicating whether we should enable the automatic brightness.
+         Software implementation will be used if config_hardware_auto_brightness_available is not set -->
+    <bool name="config_automatic_brightness_available">true</bool>
+
+    <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
+    <bool name="config_unplugTurnsOnScreen">true</bool>
+
+    <!-- Indicate whether closing the lid causes the device to go to sleep and opening
+         it causes the device to wake up.
+         The default is false. -->
+    <bool name="config_lidControlsSleep">true</bool>
+
+    <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
+         in hardware. -->
+    <bool name="config_setColorTransformAccelerated">true</bool>
+
+    <!-- Indicate whether to allow the device to suspend when the screen is off
+         due to the proximity sensor.  This resource should only be set to true
+         if the sensor HAL correctly handles the proximity sensor as a wake-up source.
+         Otherwise, the device may fail to wake out of suspend reliably.
+         The default is false. -->
+    <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
+
+    <!-- Is the device capable of hot swapping an UICC Card -->
+    <bool name="config_hotswapCapable">true</bool>
+
+    <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
+         for debouncing the light sensor.  Different constants are used to debounce the light sensor
+         when adapting to brighter or darker environments.  This parameter controls how quickly
+         brightness changes occur in response to an observed change in light level that exceeds the
+         hysteresis threshold. -->
+    <integer name="config_autoBrightnessBrighteningLightDebounce">1000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">1000</integer>
+
+    <!-- The maximum range of gamma adjustment possible using the screen
+         auto-brightness adjustment setting. -->
+    <fraction name="config_autoBrightnessAdjustmentMaxGamma">100%</fraction>
+
+    <!-- Screen brightness used to dim the screen when the user activity
+         timeout expires.  May be less than the minimum allowed brightness setting
+         that can be set by the user. -->
+    <integer name="config_screenBrightnessDim">20</integer>
+
+    <!-- Array of light sensor lux values to define our levels for auto backlight brightness support.
+         The N entries of this array define N + 1 control points as follows:
+         (1-based arrays)
+
+         Point 1:            (0, value[1]):             lux <= 0
+         Point 2:     (level[1], value[2]):  0        < lux <= level[1]
+         Point 3:     (level[2], value[3]):  level[2] < lux <= level[3]
+         ...
+         Point N+1: (level[N], value[N+1]):  level[N] < lux
+
+         The control points must be strictly increasing.  Each control point
+         corresponds to an entry in the brightness backlight values arrays.
+         For example, if lux == level[1] (first element of the levels array)
+         then the brightness will be determined by value[2] (second element
+         of the brightness values array).
+
+         Spline interpolation is used to determine the auto-brightness
+         backlight values for lux levels between these control points.
+
+         Must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessLevels">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>6</item>
+        <item>8</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>65</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+        <item>85</item>
+        <item>90</item>
+        <item>95</item>
+        <item>100</item>
+        <item>120</item>
+        <item>140</item>
+        <item>160</item>
+        <item>180</item>
+        <item>200</item>
+        <item>220</item>
+        <item>240</item>
+        <item>260</item>
+        <item>280</item>
+        <item>300</item>
+        <item>320</item>
+        <item>340</item>
+        <item>360</item>
+        <item>380</item>
+        <item>400</item>
+        <item>420</item>
+        <item>440</item>
+        <item>460</item>
+        <item>480</item>
+        <item>500</item>
+        <item>700</item>
+        <item>900</item>
+        <item>1100</item>
+        <item>1300</item>
+        <item>1500</item>
+        <item>1700</item>
+        <item>1900</item>
+        <item>2200</item>
+        <item>2500</item>
+        <item>3000</item>
+        <item>3500</item>
+        <item>4000</item>
+        <item>4500</item>
+    </integer-array>
+
+    <!-- Array of desired screen brightness in nits corresponding to the lux values
+         in the config_autoBrightnessLevels array. As with config_screenBrightnessMinimumNits and
+         config_screenBrightnessMaximumNits, the display brightness is defined as the measured
+         brightness of an all-white image.
+
+         If this is defined then:
+            - config_autoBrightnessLcdBacklightValues should not be defined
+            - config_screenBrightnessNits must be defined
+            - config_screenBrightnessBacklight must be defined
+
+         This array should have size one greater than the size of the config_autoBrightnessLevels
+         array. The brightness values must be non-negative and non-decreasing. This must be
+         overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessDisplayValuesNits">
+      <item>7</item>
+      <item>7</item>
+      <item>7</item>
+      <item>7</item>
+      <item>24</item>
+      <item>33</item>
+      <item>40</item>
+      <item>57</item>
+      <item>70</item>
+      <item>81</item>
+      <item>88</item>
+      <item>95</item>
+      <item>95</item>
+      <item>96</item>
+      <item>96</item>
+      <item>96</item>
+      <item>97</item>
+      <item>97</item>
+      <item>98</item>
+      <item>98</item>
+      <item>98</item>
+      <item>99</item>
+      <item>99</item>
+      <item>100</item>
+      <item>101</item>
+      <item>101</item>
+      <item>104</item>
+      <item>105</item>
+      <item>106</item>
+      <item>107</item>
+      <item>109</item>
+      <item>111</item>
+      <item>112</item>
+      <item>114</item>
+      <item>116</item>
+      <item>117</item>
+      <item>119</item>
+      <item>123</item>
+      <item>124</item>
+      <item>126</item>
+      <item>127</item>
+      <item>129</item>
+      <item>130</item>
+      <item>133</item>
+      <item>134</item>
+      <item>160</item>
+      <item>186</item>
+      <item>213</item>
+      <item>243</item>
+      <item>272</item>
+      <item>301</item>
+      <item>330</item>
+      <item>371</item>
+      <item>403</item>
+      <item>432</item>
+      <item>454</item>
+      <item>462</item>
+      <item>462</item>
+    </integer-array>
+
+    <!-- An array describing the screen's backlight values corresponding to the brightness
+         values in the config_screenBrightnessNits array.
+
+         This array should be equal in size to config_screenBrightnessBacklight. -->
+    <integer-array name="config_screenBrightnessBacklight">
+      <item>1</item>
+      <item>15</item>
+      <item>30</item>
+      <item>45</item>
+      <item>60</item>
+      <item>75</item>
+      <item>90</item>
+      <item>105</item>
+      <item>120</item>
+      <item>135</item>
+      <item>150</item>
+      <item>165</item>
+      <item>180</item>
+      <item>195</item>
+      <item>210</item>
+      <item>225</item>
+      <item>240</item>
+      <item>255</item>
+    </integer-array>
+
+    <!-- Array of ambient lux threshold values. This is used for determining hysteresis constraint
+         values by calculating the index to use for lookup and then setting the constraint value
+         to the corresponding value of the array. The new brightening hysteresis constraint value
+         is the n-th element of config_ambientBrighteningThresholds, and the new darkening
+         hysteresis constraint value is the n-th element of config_ambientDarkeningThresholds.
+
+         The (zero-based) index is calculated as follows: (MAX is the largest index of the array)
+         condition                       calculated index
+         value < level[0]                0
+         level[n] <= value < level[n+1]  n+1
+         level[MAX] <= value             MAX+1 -->
+    <integer-array name="config_ambientThresholdLevels">
+      <item>2</item>
+      <item>10</item>
+      <item>30</item>
+      <item>100</item>
+      <item>800</item>
+      <item>2000</item>
+      <item>4000</item>
+    </integer-array>
+
+    <!-- Array of hysteresis constraint values for brightening, represented as tenths of a
+         percent. The length of this array is assumed to be one greater than
+         config_ambientThresholdLevels. The brightening threshold is calculated as
+         lux * (1.0f + CONSTRAINT_VALUE). When the current lux is higher than this threshold,
+         the screen brightness is recalculated. See the config_ambientThresholdLevels
+         description for how the constraint value is chosen. -->
+    <integer-array name="config_ambientBrighteningThresholds">
+      <item>5</item>
+      <item>5</item>
+      <item>10</item>
+      <item>30</item>
+      <item>100</item>
+      <item>400</item>
+      <item>600</item>
+      <item>1000</item>
+    </integer-array>
+
+    <!-- Array of hysteresis constraint values for darkening, represented as tenths of a
+         percent. The length of this array is assumed to be one greater than
+         config_ambientThresholdLevels. The darkening threshold is calculated as
+         lux * (1.0f - CONSTRAINT_VALUE). When the current lux is lower than this threshold,
+         the screen brightness is recalculated. See the config_ambientThresholdLevels
+         description for how the constraint value is chosen. -->
+    <integer-array name="config_ambientDarkeningThresholds">
+      <item>800</item>
+      <item>800</item>
+      <item>500</item>
+      <item>500</item>
+      <item>500</item>
+      <item>500</item>
+      <item>500</item>
+      <item>500</item>
+    </integer-array>
+
+    <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
+         autodetected from the Configuration. -->
+    <bool name="config_showNavigationBar">true</bool>
+
+    <!-- If true, the doze component is not started until after the screen has been
+         turned off and the screen off animation has been performed. -->
+    <bool name="config_dozeAfterScreenOffByDefault">true</bool>
+
+    <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
+    <bool name="config_displayBlanksAfterDoze">true</bool>
+
+    <!-- Configure mobile tcp buffer sizes in the form:
+         rat-name:rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max
+         If no value is found for the rat-name in use, the system default will be applied.
+    -->
+    <string-array name="config_mobile_tcp_buffers">
+      <item>gprs:4092,8760,48000,4096,8760,48000</item>
+      <item>edge:4093,26280,70800,4096,16384,70800</item>
+      <item>umts:58254,1398100,4194304,58254,1398100,4194304</item>
+      <item>1xrtt:16384,32768,131072,4096,16384,102400</item>
+      <item>evdo:4094,87380,262144,4096,16384,262144</item>
+      <item>ehrpd:131072,262144,1048576,4096,16384,524288</item>
+      <item>hsdpa:58254,1398100,4194304,58254,1398100,4194304</item>
+      <item>hspa:58254,1398100,4194304,58254,1398100,4194304</item>
+      <item>lte:2097152,4194304,8388608,262144,524288,1048576</item>
+      <item>hspap:58254,1398100,4194304,58254,1398100,4194304</item>
+    </string-array>
+
+    <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
+         on the headphone/microphone jack. When false use the older uevent framework. -->
+    <bool name="config_useDevInputEventForAudioJack">true</bool>
+
+    <!-- Flag specifying whether VoLTE is available on device -->
+    <bool name="config_device_volte_available">true</bool>
+
+    <!-- Flag specifying whether VoLTE TTY is supported -->
+    <bool name="config_carrier_volte_tty_supported">false</bool>
+
+    <!-- Flag specifying whether VT is available on device -->
+    <bool name="config_device_vt_available">true</bool>
+
+    <!-- Flag specifying whether WFC over IMS is available on device -->
+    <bool name="config_device_wfc_ims_available">true</bool>
+
+    <!-- Config determines whether to update phone object when voice registration
+         state changes. Voice radio tech change will always trigger an update of
+         phone object irrespective of this config -->
+    <bool name="config_switch_phone_on_voice_reg_state_change">false</bool>
+
+    <!-- Default files to pin via Pinner Service -->
+    <string-array name="config_defaultPinnerServiceFiles">
+      <item>/data/dalvik-cache/arm64/system@framework@boot.oat</item>
+      <item>/data/dalvik-cache/arm/system@framework@boot.oat</item>
+      <item>/data/dalvik-cache/arm64/system@framework@services.jar@classes.dex</item>
+      <item>/data/dalvik-cache/arm/system@framework@services.jar@classes.dex</item>
+      <item>/system/framework/arm64/boot.oat</item>
+      <item>/system/framework/arm/boot.oat</item>
+      <item>/system/framework/oat/arm64/services.odex</item>
+      <item>/system/framework/oat/arm/services.odex</item>
+      <item>/system/framework/arm64/boot-framework.oat</item>
+      <item>/system/framework/arm/boot-framework.oat</item>
+      <item>/system/framework/arm64/boot-core-libart.oat</item>
+      <item>/system/framework/arm/boot-core-libart.oat</item>
+      <item>/system/lib64/libRScpp.so</item>
+      <item>/system/lib64/libRS.so</item>
+      <item>/system/lib64/libRS_internal.so</item>
+      <item>/system/lib64/libbcinfo.so</item>
+      <item>/system/lib64/libRSDriver.so</item>
+      <item>/system/lib64/libRSCpuRef.so</item>
+      <item>/system/lib64/libblas.so</item>
+    </string-array>
+
+    <!-- List of biometric sensors on the device, in decreasing strength. Consumed by AuthService
+         when registering authenticators with BiometricService. Format must be ID:Modality:Strength,
+         where: IDs are unique per device, Modality as defined in BiometricAuthenticator.java,
+         and Strength as defined in Authenticators.java -->
+    <string-array name="config_biometric_sensors">
+      <item>0:2:15</item>
+    </string-array>
+</resources>
