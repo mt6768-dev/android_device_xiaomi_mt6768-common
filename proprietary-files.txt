@@ -402,7 +402,6 @@ vendor/lib64/libmtkcam_pipelinepolicy-security.so
 vendor/lib64/libmtkcam_pipelinepolicy_factory.so
 vendor/lib64/libmtkcam_rsc.so
 vendor/lib64/libmtkcam_scenariorecorder.so
-vendor/lib64/libmtkcam_stdutils.so
 vendor/lib64/libmtkcam_sysutils.so
 vendor/lib64/libmtkcam_ulog.so
 vendor/lib64/libmtkisp_metadata.so
@@ -416,6 +415,9 @@ vendor/lib64/vendor.mediatek.hardware.camera.isphal@1.0.so
 vendor/lib64/vendor.mediatek.hardware.camera.lomoeffect@1.0.so
 vendor/lib64/vendor.mediatek.hardware.camera.postproc@1.0.so
 vendor/lib64/vendor.mediatek.hardware.camera.security@1.0.so
+
+# Camera Utils - from merlin-user 12 SP1A.210812.016 V13.0.1.0.SJOMIXM release-keys
+vendor/lib64/libmtkcam_stdutils.so|1e800f54452dcd813967df5d22ed70e7553c18d4
 
 # IR
 vendor/lib/hw/consumerir.mt6768.so
