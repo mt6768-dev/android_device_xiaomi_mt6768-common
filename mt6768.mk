@@ -244,6 +244,7 @@ PRODUCT_PACKAGES += \
     init.mt6768.rc \
     init.mt6768.usb.rc \
     init.sensor_1_0.rc \
+    init.target.rc \
     ueventd.mtk.rc
 
 PRODUCT_PACKAGES += \
