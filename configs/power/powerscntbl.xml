@@ -101,5 +101,6 @@
         <data cmd="PERF_RES_SCHED_UCLAMP_MIN_TA" param1="50"></data>
         <data cmd="PERF_RES_POWERHAL_TOUCH_BOOST_DURATION" param1="100000"></data>
         <data cmd="PERF_RES_POWERHAL_TOUCH_BOOST_EAS_BOOST" param1="50"></data>
+        <data cmd="PERF_RES_POWERHAL_TOUCH_BOOST_NOTIFY_FBC" param1="1"></data>
     </scenario>
 </SCNTABLE>
