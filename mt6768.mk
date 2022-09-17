@@ -246,6 +246,9 @@ PRODUCT_PACKAGES += \
     init.sensor_1_0.rc \
     ueventd.mtk.rc
 
+PRODUCT_PACKAGES += \
+    init.recovery.mt6768.rc
+
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0.vendor \
