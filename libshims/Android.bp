@@ -22,3 +22,12 @@ cc_library_shared {
     ],
     include_dirs: [ "system/keymaster/include" ],
 }
+
+cc_library_shared {
+    name: "libshim_showlogo",
+    srcs: ["libshim_showlogo.cpp"],
+    shared_libs: [
+        "libgui",
+        "libutils",
+    ],
+}
