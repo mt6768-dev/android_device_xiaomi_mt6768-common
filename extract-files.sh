@@ -63,6 +63,9 @@ function blob_fixup {
         vendor/lib*/hw/audio.primary.mt6768.so)
             "${PATCHELF}" --add-needed "libshim_audio.so" "${2}"
             ;;
+        vendor/lib64/libwifi-hal-mtk.so)
+            "$PATCHELF" --set-soname libwifi-hal-mtk.so "${2}"
+            ;;
         vendor/bin/hw/android.hardware.keymaster@4.0-service.beanpod)
             "${PATCHELF}" --add-needed "libshim_beanpod.so" "${2}"
             ;;
