@@ -240,6 +240,7 @@ vendor/lib/libblisrc32_vendor.so
 vendor/lib/libcvsd_mtk.so
 vendor/lib/libspeech_enh_lib.so
 vendor/lib/libspeechparser_vendor.so
+vendor/lib/libwebrtc_audio_preprocessing.so
 vendor/lib/vendor.mediatek.hardware.audio@6.1.so
 vendor/lib64/hw/audio.r_submix.mt6768.so
 vendor/lib64/hw/audio.usb.mt6768.so
@@ -265,6 +266,7 @@ vendor/lib64/libmsnr.so
 vendor/lib64/libspeech_enh_lib.so
 vendor/lib64/libspeechparser_vendor.so
 vendor/lib64/libstereoinfoaccessor_vsdof.so
+vendor/lib64/libwebrtc_audio_preprocessing.so
 vendor/lib64/vendor.mediatek.hardware.audio@6.1.so
 
 # Bluetooth
