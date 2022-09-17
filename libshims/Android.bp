@@ -30,4 +30,5 @@ cc_library_shared {
         "libgui",
         "libutils",
     ],
+    local_include_dirs: ["include"]
 }
