@@ -97,6 +97,7 @@
         <data cmd="PERF_RES_CPUFREQ_MIN_CLUSTER_0" param1="3000000"></data>
         <data cmd="PERF_RES_CPUFREQ_MIN_CLUSTER_1" param1="3000000"></data>
         <data cmd="PERF_RES_POWER_HINT_HOLD_TIME" param1="300"></data>
-        <data cmd="PERF_RES_GPU_FREQ_MIN" param1="0"></data>
+        <data cmd="PERF_RES_POWERHAL_TOUCH_BOOST_DURATION" param1="100000"></data>
+        <data cmd="PERF_RES_POWERHAL_TOUCH_BOOST_EAS_BOOST" param1="50"></data>
     </scenario>
 </SCNTABLE>
