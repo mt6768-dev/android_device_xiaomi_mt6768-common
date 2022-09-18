@@ -36,6 +36,7 @@ cc_library_shared {
 cc_library_shared {
     name: "libshim_vtservice",
     srcs: ["libshim_vtservice.cpp"],
+    compile_multilib: "32",
     shared_libs: [
         "libaudioclient",
         "libgui",
