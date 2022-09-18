@@ -989,6 +989,47 @@ vendor/lib64/vendor.mediatek.hardware.dmc@1.1.so
 vendor/lib64/vendor.mediatek.hardware.dmc@1.2.so
 vendor/lib64/vendor.mediatek.hardware.videotelephony@1.0.so
 
+# IMS-System
+bin/vtservice
+etc/apns-conf.xml:product/etc/apns-conf.xml
+etc/init/init.vtservice.rc
+-framework/mediatek-common.jar
+-framework/mediatek-framework.jar
+-framework/mediatek-ims-base.jar
+-framework/mediatek-ims-common.jar
+-framework/mediatek-ims-extension-plugin.jar
+-framework/mediatek-ims-legacy.jar
+-framework/mediatek-telecom-common.jar
+-framework/mediatek-telephony-base.jar
+-framework/mediatek-telephony-common.jar
+lib/libcomutils.so
+lib/libimsma.so
+lib/libimsma_adapt.so
+lib/libimsma_rtp.so
+lib/libimsma_socketwrapper.so
+lib/libmtk_vt_service.so
+lib/libmtk_vt_wrapper.so
+lib/libmtkavenhancements.so
+lib/libmtkperf_client.so
+lib/libsignal.so
+lib/libsink.so
+lib/libsource.so
+lib/libvcodec_cap.so
+lib/libvcodec_capenc.so
+lib/libvt_avsync.so
+lib64/libmtk_vt_wrapper.so
+lib64/libmtkavenhancements.so
+lib64/libmtkperf_client.so
+lib64/libvcodec_cap.so
+lib64/libvcodec_capenc.so
+-priv-app/ImsService/ImsService.apk
+system_ext/lib/vendor.mediatek.hardware.mtkradioex@1.0.so
+system_ext/lib/vendor.mediatek.hardware.videotelephony@1.0.so
+system_ext/lib64/vendor.mediatek.hardware.dmc@1.1.so
+system_ext/lib64/vendor.mediatek.hardware.dmc@1.2.so
+system_ext/lib64/vendor.mediatek.hardware.mtkradioex@1.0.so
+system_ext/lib64/vendor.mediatek.hardware.videotelephony@1.0.so
+
 # Power
 vendor/bin/hw/power_native_test_v_1_0
 vendor/bin/hw/power_native_test_v_1_1
