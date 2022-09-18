@@ -193,7 +193,8 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_PACKAGES += \
     WifiOverlay \
-    TetheringConfigOverlay
+    TetheringConfigOverlay \
+    CarrierConfigOverlayMT6768
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config gid1="6230" mcc="310" mnc="240">
+        <boolean name="mtk_key_roaming_bar_guard_bool" value="true" />
+    </carrier_config>
+</carrier_config_list>
