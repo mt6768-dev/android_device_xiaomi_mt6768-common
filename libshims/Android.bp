@@ -32,3 +32,14 @@ cc_library_shared {
     ],
     local_include_dirs: ["include"]
 }
+
+cc_library_shared {
+    name: "libshim_vtservice",
+    srcs: ["libshim_vtservice.cpp"],
+    shared_libs: ["libaudioclient"],
+    header_libs: [
+        "libaudioclient_headers",
+        "libmedia_headers",
+        "libmediametrics_headers",
+    ],
+}
