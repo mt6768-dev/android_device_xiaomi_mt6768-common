@@ -463,8 +463,6 @@ vendor/lib/egl/libGLES_mali.so
 vendor/lib/egl/libGLES_meow.so
 vendor/lib/egl/libMEOW_gift.so
 vendor/lib/egl/libMEOW_trace.so
-vendor/lib/hw/android.hardware.graphics.allocator@4.0-impl-mediatek.so
-vendor/lib/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so
 vendor/lib/hw/dfps.mt6768.so
 vendor/lib/hw/memtrack.mt6768.so
 vendor/lib/hw/vendor.mediatek.hardware.dfps@1.0-impl.so
@@ -492,8 +490,6 @@ vendor/lib64/egl/libGLES_mali.so
 vendor/lib64/egl/libGLES_meow.so
 vendor/lib64/egl/libMEOW_gift.so
 vendor/lib64/egl/libMEOW_trace.so
-vendor/lib64/hw/android.hardware.graphics.allocator@4.0-impl-mediatek.so
-vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so
 vendor/lib64/hw/dfps.mt6768.so
 vendor/lib64/hw/hwcomposer.mt6768.so
 vendor/lib64/hw/memtrack.mt6768.so
@@ -520,6 +516,14 @@ vendor/lib64/libminiui.so
 vendor/lib64/libpixelflinger.so
 vendor/lib64/vendor.mediatek.hardware.dfps@1.0.so
 vendor/lib64/vendor.mediatek.hardware.gpu@1.0.so
+
+# Graphics (Allocator) - from merlin-user 12 SP1A.210812.016 V13.0.1.0.SJOMIXM release-keys
+vendor/lib/hw/android.hardware.graphics.allocator@4.0-impl-mediatek.so|76ad23cf369d57c4e54b343a34db5857ea2af3ee
+vendor/lib64/hw/android.hardware.graphics.allocator@4.0-impl-mediatek.so|fcd8bb4a81e0325976121558bd8fec691e68c54e
+
+# Graphics (Mapper) - from merlin-user 12 SP1A.210812.016 V13.0.1.0.SJOMIXM release-keys
+vendor/lib/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so|f9a1c4433877187d2a221b5737080bda49663f21
+vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so|bef0c783e7a56a318d07f7a18c0a8b5d235be44c
 
 # Fingerprint
 vendor/lib64/hw/fingerprint.default.so:vendor/lib64/hw/fingerprint.mt6768.so
