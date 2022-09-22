@@ -49,3 +49,5 @@ product                                              /product              ext4 
 
 /devices/platform/externdevice*                      auto                  auto            defaults                                                                voldmanaged=sdcard1:auto,encryptable=userdata
 /devices/platform/mt_usb*                            auto                  vfat            defaults                                                                voldmanaged=sdcard1:auto,encryptable=userdata
+
+/dev/block/zram0                                     none                  swap            defaults                                                                zramsize=2147483648
