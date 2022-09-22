@@ -18,6 +18,9 @@ Build.BRAND=MTK
 ro.camera.sound.forced=0
 persist.camera.dualcal.state=-1
 
+# Dalvik
+dalvik.vm.dex2oat64.enabled=true
+
 # FM Radio
 persist.internalAntenna.enable=true
 
