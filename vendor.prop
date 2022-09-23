@@ -80,6 +80,9 @@ vendor.display.svi.config_path=/system/etc/SVIConfig.xml
 persist.vendor.max.brightness=448
 ro.vendor.colorpick_adjust=true
 ro.vendor.cabc.enable=true
+debug.hwui.renderer=skiagl
+debug.renderengine.backend=skiaglthreaded
+renderthread.skia.reduceopstasksplitting=true
 
 # FM Radio
 ro.vendor.mtk_fm_short_antenna_support=1
