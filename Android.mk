@@ -6,7 +6,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter merlinx lava,$(TARGET_DEVICE)),)
+ifneq ($(filter merlinx lancelot,$(TARGET_DEVICE)),)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
 VULKAN_SYMLINKS := $(TARGET_OUT_VENDOR)
