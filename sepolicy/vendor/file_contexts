@@ -16,5 +16,8 @@
 # Thermals
 /vendor/bin/mi_thermald       										u:object_r:mi_thermald_exec:s0
 
+# USB
+/(vendor|system/vendor)/bin/hw/android\.hardware\.usb@1\.[0-9]+-service\.mt6768   			u:object_r:mtk_hal_usb_exec:s0
+
 # WiFi
 /(vendor|system/vendor)/bin/hw/android\.hardware\.wifi@[0-9]\.[0-9]-service-lazy\.mt6768 		u:object_r:hal_wifi_default_exec:s0
