@@ -5,3 +5,6 @@ type vendor_fingerprint_device, dev_type;
 # Performance
 type proc_vm_dirty, fs_type, proc_type;
 type proc_sched_stune, fs_type, proc_type;
+
+# Touchpanel
+type sysfs_touchpanel, sysfs_type, fs_type;

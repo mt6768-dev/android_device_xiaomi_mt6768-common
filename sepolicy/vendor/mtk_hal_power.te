@@ -1,0 +1,2 @@
+allow mtk_hal_power sysfs_touchpanel:dir r_dir_perms;
+allow mtk_hal_power sysfs_touchpanel:file rw_file_perms;
