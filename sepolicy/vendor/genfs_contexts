@@ -1,3 +1,12 @@
+# Health
+genfscon sysfs /devices/platform/mt_charger/power_supply/ac                                                                     u:object_r:vendor_sysfs_ac_supply:s0
+genfscon sysfs /devices/platform/mt_charger/power_supply/usb                                                                    u:object_r:vendor_sysfs_usb_supply:s0
+genfscon sysfs /devices/platform/mt_charger/power_supply/main                                                                   u:object_r:vendor_sysfs_main_supply:s0
+genfscon sysfs /devices/platform/mt_charger/power_supply/charger                                                                u:object_r:vendor_sysfs_charger_supply:s0
+genfscon sysfs /devices/platform/battery/power_supply/battery                                                                   u:object_r:vendor_sysfs_battery_supply:s0
+genfscon sysfs /devices/platform/battery/power_supply/bms     	       	       	       	       	       	       	       	       	u:object_r:vendor_sysfs_bms_supply:s0
+genfscon sysfs /devices/platform/11004000.i2c7/i2c-7/7-0055/power_supply/parallel                                               u:object_r:vendor_sysfs_parallel_supply:s0
+
 # Leds
 genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.auto/leds 					u:object_r:sysfs_leds:s0
 genfscon sysfs /devices/platform/leds-mt65xx/leds/lcd-backlight                           					u:object_r:sysfs_leds:s0
