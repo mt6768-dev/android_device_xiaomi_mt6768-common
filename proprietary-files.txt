@@ -417,7 +417,7 @@ vendor/lib64/vendor.mediatek.hardware.camera.postproc@1.0.so
 vendor/lib64/vendor.mediatek.hardware.camera.security@1.0.so
 
 # Camera Utils - from merlin-user 12 SP1A.210812.016 V13.0.1.0.SJOMIXM release-keys
-vendor/lib64/libmtkcam_stdutils.so|1e800f54452dcd813967df5d22ed70e7553c18d4
+vendor/lib64/libmtkcam_stdutils.so|1e800f54452dcd813967df5d22ed70e7553c18d4|73d2a75d63a8e8663c2e0b265f6e0821d2e70377
 
 # Charger
 bin/kpoc_charger
