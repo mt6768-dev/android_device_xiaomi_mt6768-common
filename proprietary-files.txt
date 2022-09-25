@@ -1075,7 +1075,6 @@ vendor/bin/ccci_rpcd
 vendor/bin/gsm0710muxd
 vendor/bin/netdagent
 vendor/bin/netdc
-vendor/bin/vsimd
 vendor/etc/apdb/APDB_MT6768_S01__W2040
 vendor/etc/apdb/APDB_MT6768_S01__W2040_ENUM
 vendor/etc/init/em_hidl_user.rc
@@ -1120,7 +1119,6 @@ vendor/lib/libmtksysutils.so
 vendor/lib/libstorage_otp.so
 vendor/lib/libsysenv.so
 vendor/lib/libutinterface_md.so
-vendor/lib/libvsim.so
 vendor/lib/vendor.mediatek.hardware.mms@1.0.so
 vendor/lib/vendor.mediatek.hardware.mms@1.1.so
 vendor/lib/vendor.mediatek.hardware.mms@1.2.so
@@ -1148,7 +1146,6 @@ vendor/lib64/libratconfig.so
 vendor/lib64/libsysenv.so
 vendor/lib64/libutinterface_md.so
 vendor/lib64/libvia-ril.so
-vendor/lib64/libvsim.so
 vendor/lib64/libwo.so
 vendor/lib64/vendor.mediatek.hardware.mms@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mms@1.1.so
@@ -1238,9 +1235,7 @@ vendor/bin/LDC_packdata_xiaomi_C3_src1_3264x2448_v4_20190730.dat
 vendor/bin/mlipayd@1.1
 vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.touchfeature@1.0-service.rc
-vendor/etc/init/vendor.xiaomi.hardware.vsimapp@1.0-service.rc
 -vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mlipay.xml
--vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.vsimapp.xml
 vendor/lib/hw/vendor.xiaomi.hardware.touchfeature@1.0-impl.so
 vendor/lib/libcheckpid.so
 vendor/lib/liblogwrap_vendor.so
@@ -1249,7 +1244,6 @@ vendor/lib/libmlipay@1.1.so
 vendor/lib/vendor.xiaomi.hardware.mlipay@1.0.so
 vendor/lib/vendor.xiaomi.hardware.mlipay@1.1.so
 vendor/lib/vendor.xiaomi.hardware.touchfeature@1.0.so
-vendor/lib/vendor.xiaomi.hardware.vsimapp@1.0.so
 vendor/lib64/hw/vendor.xiaomi.hardware.touchfeature@1.0-impl.so
 vendor/lib64/libcheckpid.so
 vendor/lib64/liblogwrap_vendor.so
@@ -1258,7 +1252,6 @@ vendor/lib64/libmlipay@1.1.so
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.1.so
 vendor/lib64/vendor.xiaomi.hardware.touchfeature@1.0.so
-vendor/lib64/vendor.xiaomi.hardware.vsimapp@1.0.so
 
 # FFU
 vendor/bin/mmc_ffu
