@@ -1,6 +1,7 @@
 # Fingerprint
 type vendor_fingerprint_data_file, data_file_type, file_type;
 type vendor_fingerprint_device, dev_type;
+type sysfs_fingerprint, fs_type, sysfs_type;
 
 # Health
 type vendor_sysfs_ac_supply, fs_type, sysfs_type;
