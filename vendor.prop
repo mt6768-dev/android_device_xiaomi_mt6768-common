@@ -45,7 +45,6 @@ persist.vendor.camera3.pipeline.bufnum.min.low_ram.fdyuv=5
 ro.vendor.camera3.zsl.default=140
 ro.vendor.mtk_zsdhdr_support=1
 ro.vendor.mtk_slow_motion_support=1
-ro.mtk_cam_stereo_camera_support=1
 ro.vendor.mtk_camera_app_version=3
 
 # DRM
@@ -68,11 +67,6 @@ ro.vendor.mtk_pq_support=2
 ro.vendor.mtk_pq_color_mode=1
 ro.vendor.mtk_aal_support=1
 ro.vendor.mtk_blulight_def_support=1
-config.svi.path=/system/etc/SVIConfig.xml
-debug.svi.logs=1
-debug.als.logs=1
-config.svi.xml=1
-config.svi.xml.print=1
 ro.vendor.display.svi=1
 ro.vendor.display.sensortype=2
 vendor.display.svi.config=1
@@ -80,9 +74,6 @@ vendor.display.svi.config_path=/system/etc/SVIConfig.xml
 persist.vendor.max.brightness=448
 ro.vendor.colorpick_adjust=true
 ro.vendor.cabc.enable=true
-debug.hwui.renderer=skiagl
-debug.renderengine.backend=skiaglthreaded
-renderthread.skia.reduceopstasksplitting=true
 
 # FM Radio
 ro.vendor.mtk_fm_short_antenna_support=1
@@ -130,7 +121,6 @@ persist.sys.mms.bg_apps_limit=96
 persist.sys.mmms.lowmem.wmark.boost.factor=3
 persist.sys.miui.adj_update_foreground_state.enable.delayMs=3000
 persist.sys.miui.camera.lmkd.level.update=2
-persist.miui.extm.enable=1
 
 # Media
 ro.vendor.mtk_config_max_dram_size=0x800000000
@@ -155,7 +145,6 @@ ro.vendor.mtk_exchange_support=1
 persist.radio.multisim.config=dsds
 persist.vendor.radio.msimmode=dsds
 ro.vendor.radio.max.multisim=dsds
-ro.telephony.sim.count=2
 telephony.active_modems.max_count=2
 persist.vendor.radio.fd.counter=150
 persist.vendor.radio.fd.off.counter=50
@@ -226,7 +215,6 @@ ro.vendor.mtk_tee_gp_support=1
 ro.hardware.kmsetkey=beanpod
 ro.hardware.gatekeeper=beanpod
 ro.vendor.mtk_microtrust_tee_support=1
-ro.mtk_key_manager_support=1
 
 # WiFi
 ro.vendor.wifi.sap.interface=ap0
