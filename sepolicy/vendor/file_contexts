@@ -2,6 +2,9 @@
 /data/vendor/cirrus(/.*)?										u:object_r:mtk_audiohal_data_file:s0
 /mnt/vendor/persist/audio(/.*)? 									u:object_r:mtk_audiohal_data_file:s0
 
+# Camera
+/mnt/vendor/persist/camera(/.*)?                                                                        u:object_r:persist_camera_data_file:s0
+
 # Fingerprint
 /mnt/vendor/persist/goodix(/.*)? 									u:object_r:vendor_fingerprint_data_file:s0
 /mnt/vendor/persist/fpc(/.*)?    									u:object_r:vendor_fingerprint_data_file:s0
