@@ -11,6 +11,30 @@ cc_library_shared {
 }
 
 cc_library_shared {
+    name: "libshim_audio_impl",
+    srcs: [
+        "libshim_audio_impl.cpp"
+    ],
+    shared_libs: [
+        "libutils",
+        "libhidlbase",
+        "android.hardware.audio.common-util",
+        "android.hardware.audio.common@6.0",
+        "android.hardware.audio.common@6.0-util",
+    ],
+    header_libs: [
+        "android.hardware.audio.common.util@all-versions",
+        "libaudioclient_headers",
+    ],
+    cflags: [
+        "-DMAJOR_VERSION=6",
+        "-DMINOR_VERSION=0",
+        "-include common/all-versions/VersionMacro.h",
+    ],
+    vendor: true
+}
+
+cc_library_shared {
     name: "libshim_beanpod",
     srcs: ["libshim_beanpod.cpp"],
     vendor: true,

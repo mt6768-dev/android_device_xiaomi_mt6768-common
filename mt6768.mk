@@ -319,6 +319,7 @@ PRODUCT_PACKAGES += \
 # Shims
 PRODUCT_PACKAGES += \
     libshim_audio \
+    libshim_audio_impl \
     libshim_beanpod \
     libshim_showlogo \
     libshim_vtservice
