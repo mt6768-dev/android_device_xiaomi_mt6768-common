@@ -219,6 +219,7 @@ vendor/etc/audio_param_ce/Volume_ParamUnitDesc.xml
 vendor/etc/aurisys_param/Speech_AudioParam.xml
 vendor/etc/init/audiocmdservice_atci.rc
 vendor/etc/aurisys_config.xml
+vendor/lib/hw/android.hardware.audio@6.0-impl-mediatek.so
 vendor/lib/hw/audio.r_submix.mt6768.so
 vendor/lib/hw/audio.usb.mt6768.so
 vendor/lib/soundfx/libaudiopreprocessing_mtk.so
@@ -240,6 +241,7 @@ vendor/lib/libspeech_enh_lib.so
 vendor/lib/libspeechparser_vendor.so
 vendor/lib/libwebrtc_audio_preprocessing.so
 vendor/lib/vendor.mediatek.hardware.audio@6.1.so
+vendor/lib64/hw/android.hardware.audio@6.0-impl-mediatek.so
 vendor/lib64/hw/audio.r_submix.mt6768.so
 vendor/lib64/hw/audio.usb.mt6768.so
 vendor/lib64/soundfx/libaudiopreprocessing_mtk.so

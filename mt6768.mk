@@ -16,9 +16,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio.service.mediatek \
-    android.hardware.audio@6.0-impl \
     android.hardware.audio.effect@6.0-impl \
     android.hardware.bluetooth.audio@2.1-impl
+
+PRODUCT_PACKAGES += \
+    android.hardware.audio.common-util.vendor \
+    android.hardware.audio.common@5.0.vendor \
+    android.hardware.audio.common@6.0.vendor \
+    android.hardware.audio.common@6.0-util.vendor \
+    android.hardware.audio@6.0.vendor \
+    android.hardware.audio@6.0-util.vendor
 
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
@@ -27,6 +34,11 @@ PRODUCT_PACKAGES += \
     audio.usb.default
 
 PRODUCT_PACKAGES += \
+    libaudiofoundation.vendor \
+    libbluetooth_audio_session \
+    libalsautils \
+    libnbaio_mono \
+    libdynproc \
     libtinycompress \
     libtinyxml \
     tinymix
