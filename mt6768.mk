@@ -333,7 +333,8 @@ PRODUCT_PACKAGES += \
 
 # VNDK
 PRODUCT_PACKAGES += \
-    libutils-v32
+    libutils-v32 \
+    libhidlbase-v32
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
