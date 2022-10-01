@@ -28,6 +28,7 @@ LOCAL_CFLAGS := \
 LOCAL_SHARED_LIBRARIES := \
     libcutils \
     libbinder \
+    libbinder_ndk \
     libhidlbase \
     liblog \
     libutils \
