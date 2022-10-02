@@ -1,4 +1,5 @@
 #include <DisplayConfig.h>
+#include <ui/Size.h>
 #include <gui/SurfaceComposerClient.h>
 
 using namespace android;
@@ -22,5 +23,13 @@ status_t _ZN7android21SurfaceComposerClient20getActiveDisplayModeERKNS_2spINS_7I
 status_t _ZN7android21SurfaceComposerClient22getActiveDisplayConfigERKNS_2spINS_7IBinderEEEPNS_13DisplayConfigE(const sp<IBinder>& display, DisplayConfig* config) {
   return _ZN7android21SurfaceComposerClient20getActiveDisplayModeERKNS_2spINS_7IBinderEEEPNS_2ui11DisplayModeE(display, (ui::DisplayMode*)config);
 }
+
+status_t _ZN7android21SurfaceComposerClient11Transaction5applyEbb(void* thisptr, bool synchronous, bool oneWay);
+
+status_t _ZN7android21SurfaceComposerClient11Transaction5applyEb(void* thisptr, bool synchronous) {
+    return _ZN7android21SurfaceComposerClient11Transaction5applyEbb(thisptr, synchronous, false /* oneWay */);
+}
+
+ui::Size _ZN7android2ui4Size7INVALIDE;
 
 }
