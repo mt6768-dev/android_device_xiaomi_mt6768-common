@@ -2,6 +2,7 @@ LOCAL_PATH := prebuilts/vndk
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := libutils-v32
+LOCAL_MULTILIB := both
 LOCAL_SRC_FILES_arm := v32/arm64/arch-arm-armv8-a/shared/vndk-sp/libutils.so
 LOCAL_SRC_FILES_arm64 := v32/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so
 LOCAL_MODULE_SUFFIX := .so
