@@ -232,6 +232,7 @@ vendor/lib/libaudioloudc.so
 vendor/lib/libaudioprimarydevicehalifclient.so
 vendor/lib/libaudiotoolkit_vendor.so
 vendor/lib/libaurisysdemo.so
+vendor/lib/libalsautils.so:vendor/lib/libalsautils-v30.so
 vendor/lib/libbessound_hd_mtk_vendor.so
 vendor/lib/libblisrc32_vendor.so
 vendor/lib/libcvsd_mtk.so
@@ -243,6 +244,7 @@ vendor/lib64/hw/audio.usb.mt6768.so
 vendor/lib64/libMtkSpeechEnh.so
 vendor/lib64/lib_iir.so
 vendor/lib64/lib_speech_enh.so
+vendor/lib64/libalsautils.so:vendor/lib64/libalsautils-v30.so
 vendor/lib64/libaudio_param_parser-vnd.so
 vendor/lib64/libaudiocomponentengine_vendor.so
 vendor/lib64/libaudiocomponentenginec.so
