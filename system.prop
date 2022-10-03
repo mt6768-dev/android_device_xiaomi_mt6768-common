@@ -4,12 +4,7 @@
 
 # Audio
 ro.audio.silent=0
-ro.vendor.audio.soundfx.type=mi
-ro.vendor.audio.soundfx.usb=true
 audio_para_version=J15S-Audiopara-V20-20200527
-ro.vendor.audio.voice.volume.boost=manual
-ro.vendor.audio.sos=true
-ro.vendor.audio.game.effect=true
 
 # Brand
 Build.BRAND=MTK

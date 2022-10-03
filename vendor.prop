@@ -14,9 +14,6 @@ ro.vendor.mtk_nn.option=A,B,C,D,E,F,G,Z
 ro.vendor.mtk_nn_quant_preferred=1
 
 # Audio
-ro.vendor.audio.game.effect=true
-ro.vendor.audio.soundfx.type=mi
-ro.vendor.audio.soundfx.usb=true
 ro.vendor.mtk_audio_alac_support=1
 ro.vendor.mtk_audio_tuning_tool_ver=V2.2
 ro.vendor.mtk_audio_ape_support=1
