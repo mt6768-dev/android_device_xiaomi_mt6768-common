@@ -1008,7 +1008,6 @@ lib/libimsma_socketwrapper.so
 lib/libmtk_vt_service.so
 lib/libmtk_vt_wrapper.so
 lib/libmtkavenhancements.so
-lib/libmtkperf_client.so
 lib/libsignal.so
 lib/libsink.so
 lib/libsource.so
@@ -1017,7 +1016,6 @@ lib/libvcodec_capenc.so
 lib/libvt_avsync.so
 lib64/libmtk_vt_wrapper.so
 lib64/libmtkavenhancements.so
-lib64/libmtkperf_client.so
 lib64/libvcodec_cap.so
 lib64/libvcodec_capenc.so
 -priv-app/ImsService/ImsService.apk|3e619e708d79609c94b455cd5a7cd92579e53646
@@ -1029,10 +1027,8 @@ system_ext/lib64/vendor.mediatek.hardware.mtkradioex@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.videotelephony@1.0.so
 
 # Power
-vendor/lib/libmtkperf_client_vendor.so
 vendor/lib/vendor.mediatek.hardware.mtkpower@1.0.so
 vendor/lib/vendor.mediatek.hardware.mtkpower@1.1.so
-vendor/lib64/libmtkperf_client_vendor.so
 vendor/lib64/vendor.mediatek.hardware.mtkpower@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mtkpower@1.1.so
 vendor/lib64/vendor.mediatek.hardware.power@1.1.so
