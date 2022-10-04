@@ -1027,10 +1027,6 @@ system_ext/lib64/vendor.mediatek.hardware.mtkradioex@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.videotelephony@1.0.so
 
 # Power
-vendor/lib/vendor.mediatek.hardware.mtkpower@1.0.so
-vendor/lib/vendor.mediatek.hardware.mtkpower@1.1.so
-vendor/lib64/vendor.mediatek.hardware.mtkpower@1.0.so
-vendor/lib64/vendor.mediatek.hardware.mtkpower@1.1.so
 vendor/lib64/vendor.mediatek.hardware.power@1.1.so
 vendor/lib64/vendor.mediatek.hardware.power@2.0.so
 
