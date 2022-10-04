@@ -1029,27 +1029,10 @@ system_ext/lib64/vendor.mediatek.hardware.mtkradioex@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.videotelephony@1.0.so
 
 # Power
-vendor/bin/hw/power_native_test_v_1_0
-vendor/bin/hw/power_native_test_v_1_1
-vendor/bin/hw/vendor.mediatek.hardware.mtkpower@1.0-service
-vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-init.rc
-vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-service.rc
-vendor/lib/hw/power.mt6768.so
-vendor/lib/hw/vendor.mediatek.hardware.mtkpower@1.1-impl.so
-vendor/lib/libmmprofile.so
 vendor/lib/libmtkperf_client_vendor.so
-vendor/lib/libperfctl_vendor.so
--vendor/lib/libpowerhal.so
-vendor/lib/libpowerhalwrap_vendor.so
 vendor/lib/vendor.mediatek.hardware.mtkpower@1.0.so
 vendor/lib/vendor.mediatek.hardware.mtkpower@1.1.so
-vendor/lib64/hw/power.mt6768.so
-vendor/lib64/hw/vendor.mediatek.hardware.mtkpower@1.1-impl.so
-vendor/lib64/libmmprofile.so
 vendor/lib64/libmtkperf_client_vendor.so
-vendor/lib64/libperfctl_vendor.so
--vendor/lib64/libpowerhal.so
-vendor/lib64/libpowerhalwrap_vendor.so
 vendor/lib64/vendor.mediatek.hardware.mtkpower@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mtkpower@1.1.so
 vendor/lib64/vendor.mediatek.hardware.power@1.1.so
