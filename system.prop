@@ -27,9 +27,6 @@ config.svi.xml.print=1
 # FM Radio
 persist.internalAntenna.enable=true
 
-# FUSE passthrough
-persist.sys.fuse.passthrough.enable=true
-
 # GPU
 ro.opengles.version=196610
 debug.hwui.renderer=skiagl
