@@ -2,9 +2,9 @@
   "Nodes": [
     {
       "Name": "CPULittleClusterMaxFreq",
-      "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq",
+      "Path": "/sys/devices/system/cpu/cpufreq/mtk/lcluster_max_freq",
       "Values": [
-        "9999999",
+        "-1",
         "2000000",
         "1916000",
         "1812000",
@@ -17,9 +17,8 @@
     },
     {
       "Name": "CPULittleClusterMinFreq",
-      "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq",
+      "Path": "/sys/devices/system/cpu/cpufreq/mtk/lcluster_min_freq",
       "Values": [
-        "9999999",
         "1393000",
         "1287000",
         "1128000",
@@ -29,15 +28,16 @@
         "756000",
         "703000",
         "650000",
-        "500000"
+        "500000",
+        "-1"
       ],
       "ResetOnInit": true
     },
     {
       "Name": "CPUBigClusterMaxFreq",
-      "Path": "/sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq",
+      "Path": "/sys/devices/system/cpu/cpufreq/mtk/bcluster_max_freq",
       "Values": [
-        "9999999",
+        "-1",
         "2400000",
         "2306000",
         "2210000",
@@ -51,9 +51,8 @@
     },
     {
       "Name": "CPUBigClusterMinFreq",
-      "Path": "/sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq",
+      "Path": "/sys/devices/system/cpu/cpufreq/mtk/bcluster_min_freq",
       "Values": [
-        "9999999",
         "1534000",
         "1418000",
         "1274000",
@@ -62,7 +61,8 @@
         "985000",
         "898000",
         "840000",
-        "725000"
+        "725000",
+        "-1"
       ],
       "ResetOnInit": true
     },
