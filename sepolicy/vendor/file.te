@@ -6,6 +6,9 @@ type vendor_fingerprint_data_file, data_file_type, file_type;
 type vendor_fingerprint_device, dev_type;
 type sysfs_fingerprint, fs_type, sysfs_type;
 
+# Graphics
+type sysfs_mali, fs_type, sysfs_type;
+
 # Latency
 type latency_device, dev_type;
 
