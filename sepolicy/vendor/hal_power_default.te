@@ -40,3 +40,5 @@ allow hal_power_default sysfs_fbt_cpu:dir r_dir_perms;
 allow hal_power_default sysfs_fbt_cpu:file rw_file_perms;
 allow hal_power_default sysfs_fbt_fteh:dir r_dir_perms;
 allow hal_power_default sysfs_fbt_fteh:file rw_file_perms;
+allow hal_power_default sysfs_fpsgo:dir r_dir_perms;
+allow hal_power_default sysfs_fpsgo:file rw_file_perms;
