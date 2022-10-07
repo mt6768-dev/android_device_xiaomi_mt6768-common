@@ -1,0 +1,22 @@
+//
+// Copyright (C) 2022 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_defaults {
+    name: "libmtkperf_client_defaults",
+    srcs: ["client.c"],
+    shared_libs: ["liblog"],
+}
+
+cc_library_shared {
+    name: "libmtkperf_client_vendor",
+    vendor: true,
+    defaults: ["libmtkperf_client_defaults"],
+}
+
+cc_library_shared {
+    name: "libmtkperf_client",
+    defaults: ["libmtkperf_client_defaults"],
+}
