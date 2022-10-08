@@ -601,10 +601,12 @@ vendor/lib/hw/gps.default.so
 vendor/lib/libDR.so
 vendor/lib/libmnl.so
 vendor/lib/librpc.so
+vendor/lib/libssl-mdapp.so
 vendor/lib/libviagpsrpc.so
 vendor/lib64/hw/android.hardware.gnss@2.1-impl-mediatek.so
 vendor/lib64/hw/gps.default.so
 vendor/lib64/lbs_hidl_service-impl.so
+vendor/lib64/libssl-mdapp.so
 vendor/lib64/vendor.mediatek.hardware.lbs@1.0.so
 
 # GPS (Configs)
