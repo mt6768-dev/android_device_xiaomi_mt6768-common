@@ -44,3 +44,7 @@ allow hal_power_default sysfs_fbt_fteh:dir r_dir_perms;
 allow hal_power_default sysfs_fbt_fteh:file rw_file_perms;
 allow hal_power_default sysfs_fpsgo:dir r_dir_perms;
 allow hal_power_default sysfs_fpsgo:file rw_file_perms;
+
+# Set touchpanel nodes
+allow hal_power_default sysfs_touchpanel:dir r_dir_perms;
+allow hal_power_default sysfs_touchpanel:file rw_file_perms;
