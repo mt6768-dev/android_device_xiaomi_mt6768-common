@@ -598,6 +598,8 @@ vendor/etc/init/ipsec_mon.rc
 vendor/etc/init/lbs_hidl_service.rc
 vendor/etc/init/mtk_agpsd_p.rc
 vendor/lib/hw/gps.default.so
+vendor/lib/libcrypto-mdapp.so
+vendor/lib/libcurl-md.so
 vendor/lib/libDR.so
 vendor/lib/libmnl.so
 vendor/lib/librpc.so
@@ -606,6 +608,8 @@ vendor/lib/libviagpsrpc.so
 vendor/lib64/hw/android.hardware.gnss@2.1-impl-mediatek.so
 vendor/lib64/hw/gps.default.so
 vendor/lib64/lbs_hidl_service-impl.so
+vendor/lib64/libcrypto-mdapp.so
+vendor/lib64/libcurl-md.so
 vendor/lib64/libssl-mdapp.so
 vendor/lib64/vendor.mediatek.hardware.lbs@1.0.so
 
