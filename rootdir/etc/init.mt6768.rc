@@ -1243,11 +1243,3 @@ service mi_thermald /system/vendor/bin/mi_thermald
     group system
 on property:odm.audio.typec.status=*
     setprop vendor.audio.typec.status ${odm.audio.typec.status}
-
-service vendor.media.omx /vendor/bin/hw/android.hardware.media.omx@1.0-service
-    class main
-    user mediacodec
-    group camera drmrpc mediadrm media_rw sdcard_rw media system audio inet net_bt net_bt_admin net_bw_acct sdcard_r
-    ioprio rt 4
-    writepid /dev/cpuset/foreground/tasks
-    override
