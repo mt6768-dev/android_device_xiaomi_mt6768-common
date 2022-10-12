@@ -933,6 +933,10 @@ on boot
 
     chown system system /sys/class/thermal/thermal_message/sconfig
 
+    # DT2W
+    chown system system /sys/touchpanel/double_tap
+    chmod 0660 /sys/touchpanel/double_tap
+
 # add charge_logger service for dump charge message
 service charge_logger /vendor/bin/charge_logger
 	class last_start
