@@ -26,7 +26,7 @@ cc_binary {
         "libbase",
         "libhardware",
         "libbinder_ndk",
-        "android.hardware.light-V1-ndk",
+        "android.hardware.light-V2-ndk",
     ],
     vendor: true,
 }
