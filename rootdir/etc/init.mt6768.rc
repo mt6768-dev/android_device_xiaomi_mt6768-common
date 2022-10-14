@@ -326,10 +326,6 @@ on post-fs-data
 
     chmod 0666 /dev/pmem_multimedia
 
-    # DT2W
-    chown system system /sys/touchpanel/double_tap
-    chmod 0644 /sys/touchpanel/double_tap
-
     # set ptmx group to non-root
     chown root radio /dev/ptmx
 
