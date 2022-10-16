@@ -12,8 +12,15 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
 <resources>
+    <!-- Default value for proximity check on screen wake
+    NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)-->
+    <bool name="config_proximityCheckOnWake">true</bool>
+    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
+
+    <!-- Whether device has screen with higher aspect ratio -->
+    <bool name="config_haveHigherAspectRatioScreen">true</bool>
+
     <!-- Hardware keys present on the device, stored as a bit field.
          This integer should equal the sum of the corresponding value for each
          of the following keys present:
@@ -41,4 +48,7 @@
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
     <integer name="config_deviceHardwareWakeKeys">64</integer>
+
+    <!-- All the capabilities of the LEDs on this device, stored as a bit field. -->
+    <integer name="config_deviceLightCapabilities">0</integer>
 </resources>
