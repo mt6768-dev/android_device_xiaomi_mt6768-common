@@ -859,9 +859,7 @@ vendor/lib64/vendor.mediatek.hardware.nvram@1.0.so
 vendor/lib64/vendor.mediatek.hardware.nvram@1.1.so
 
 # Media
-vendor/bin/hw/android.hardware.media.omx@1.0-service
 vendor/bin/hw/vendor.mediatek.hardware.mtkcodecservice@1.1-service
-vendor/etc/init/android.hardware.media.omx@1.0-service.rc
 vendor/etc/init/vendor.mediatek.hardware.mtkcodecservice@1.1-service.rc
 vendor/etc/mtk_omx_core.cfg
 vendor/lib/hw/vendor.mediatek.hardware.mtkcodecservice@1.1-impl.so
