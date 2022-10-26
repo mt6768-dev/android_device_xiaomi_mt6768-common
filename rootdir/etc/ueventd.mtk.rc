@@ -46,7 +46,7 @@
 /dev/fw_log_wifi          0660   wifi     wifi
 
 # FMRadio
-/dev/fm                   0666   media     media
+/dev/fm                   0666   system     system
 
 # NFC
 /dev/st21nfc              0660   nfc        radio

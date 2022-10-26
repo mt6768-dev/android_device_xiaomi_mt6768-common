@@ -492,7 +492,7 @@ on post-fs-data
 
     # FM Radio device node
     chmod 0666 /dev/fm
-    chown media media /dev/fm
+    chown system system /dev/fm
 
     # device apc settings
 
