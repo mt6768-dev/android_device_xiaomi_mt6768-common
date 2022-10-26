@@ -545,6 +545,9 @@ vendor/firmware/soc3_0_ram_mcu_e1_hdr.bin
 vendor/firmware/txpowerctrl.cfg
 vendor/firmware/wifi.cfg
 
+# FM Radio
+-system_ext/lib64/libfmjni.so:system/lib64/libfmjni.so
+
 # GPS
 vendor/bin/hw/android.hardware.gnss@2.1-service-mediatek
 vendor/bin/bip
