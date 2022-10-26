@@ -520,6 +520,9 @@ on post-fs-data
     #ITO
     chmod 0777 /data/local/tmp
 
+    #FM
+    chmod 0777 /sys/class/fm/fm/lan_enable
+
     #Charge
     chmod 0777 /sys/class/power_supply/usb/reverse_chg_otg
 
