@@ -35,6 +35,7 @@ genfscon sysfs /devices/platform/11004000.i2c7/i2c-7/7-0055/power_supply/paralle
 genfscon sysfs /devices/platform/11004000.i2c7/i2c-7/7-0060/tcpc/type_c_port0/wakeup 						u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6358-pmic/mt6358-rtc/rtc/rtc0/wakeup 				u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11004000.i2c7/i2c-7/7-0021/tcpc/type_c_port0/dual-role-type_c_port0/wakeup 			u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/11004000.i2c7/i2c-7/7-0060/tcpc/type_c_port0/dual-role-type_c_port0/wakeup 			u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/battery/power_supply/bms/wakeup 								u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/mt_charger/power_supply/main/wakeup 								u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/input/input4/wakeup 										u:object_r:sysfs_wakeup:s0
