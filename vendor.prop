@@ -37,7 +37,6 @@ bluetooth.profile.sap.server.enabled=true
 ro.vendor.mtk.bt_sap_enable=true
 
 # Camera
-vendor.camera.aux.packageexcludelist=org.telegram.messenger,org.thunderdog.challegram
 vendor.camera.mdp.cz.enable=1
 vendor.camera.mdp.dre.enable=0
 persist.vendor.camera3.pipeline.bufnum.min.high_ram.imgo=7

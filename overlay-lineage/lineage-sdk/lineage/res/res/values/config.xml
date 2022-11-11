@@ -51,4 +51,10 @@
 
     <!-- All the capabilities of the LEDs on this device, stored as a bit field. -->
     <integer name="config_deviceLightCapabilities">0</integer>
+
+    <!-- The list of package IDs that are not allowed to use aux cameras. -->
+    <string-array name="config_cameraAuxPackageExcludeList" translatable="false">
+        <item>org.telegram.messenger</item>
+        <item>org.thunderdog.challegram</item>
+    </string-array>
 </resources>
