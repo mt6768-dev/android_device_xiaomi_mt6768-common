@@ -112,6 +112,7 @@ on property:sys.boot_completed=1
 
 on early-fs
     write /proc/bootprof "INIT:early-fs"
+    start vold
 
 on fs
     write /proc/bootprof "INIT:fs"

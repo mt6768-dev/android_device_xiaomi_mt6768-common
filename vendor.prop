@@ -68,7 +68,11 @@ ro.vendor.mtk_sec_video_path_support=1
 ro.vendor.mtk_f2fs_enable=0
 ro.vendor.mtk_fd_support=1
 ro.vendor.mtk_emmc_support=1
+ro.crypto.allow_encrypt_override=true
+ro.crypto.dm_default_key.options_format.version=2
+ro.crypto.volume.metadata.method=dm-default-key
 ro.crypto.volume.filenames_mode=aes-256-cts
+ro.crypto.volume.options=::v2
 
 # Display
 persist.sys.mcd_config_file=/system/etc/mcd_default.conf
