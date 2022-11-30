@@ -30,9 +30,6 @@ persist.internalAntenna.enable=true
 
 # GPU
 ro.opengles.version=196610
-debug.hwui.renderer=skiagl
-debug.renderengine.backend=skiaglthreaded
-renderthread.skia.reduceopstasksplitting=true
 
 # IMS
 persist.dbg.volte_avail_ovr=1
