@@ -835,7 +835,6 @@ vendor/lib64/vendor.mediatek.hardware.pq@2.6.so
 vendor/bin/hw/vendor.mediatek.hardware.nvram@1.1-service
 vendor/bin/atcid
 vendor/bin/fuelgauged
-vendor/bin/misc_writer
 vendor/etc/init/atcid.rc
 vendor/etc/init/fuelgauged_init.rc
 vendor/etc/init/fuelgauged_nvram_init.rc
