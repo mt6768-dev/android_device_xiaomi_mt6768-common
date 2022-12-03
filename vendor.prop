@@ -138,6 +138,7 @@ persist.sys.miui.adj_update_foreground_state.enable.delayMs=3000
 persist.sys.miui.camera.lmkd.level.update=2
 
 # Media
+media.stagefright.thumbnail.prefer_hw_codecs=true
 ro.vendor.mtk_config_max_dram_size=0x800000000
 ro.vendor.smvr.p2batch.vga=8
 ro.vendor.smvr.p2batch.hd=4
