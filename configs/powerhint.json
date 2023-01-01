@@ -305,8 +305,7 @@
         "25",
         "0"
       ],
-      "ResetOnInit": true,
-      "DefaultIndex": 3
+      "ResetOnInit": true
     },
     {
       "Name": "BGUclampMin",
@@ -318,8 +317,7 @@
         "25",
         "0"
       ],
-      "ResetOnInit": true,
-      "DefaultIndex": 3
+      "ResetOnInit": true
     },
     {
       "Name": "FGUclampMin",
@@ -331,8 +329,7 @@
         "25",
         "0"
       ],
-      "ResetOnInit": true,
-      "DefaultIndex": 3
+      "ResetOnInit": true
     },
     {
       "Name": "TAUclampMin",
@@ -344,8 +341,7 @@
         "25",
         "0"
       ],
-      "ResetOnInit": true,
-      "DefaultIndex": 3
+      "ResetOnInit": true
     },
     {
       "Name": "PMQoSCpuDmaLatency",
