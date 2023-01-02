@@ -1,0 +1,18 @@
+[
+  {
+    "repository": "android_device_mediatek_sepolicy_vndr",
+    "target_path": "device/mediatek/sepolicy_vndr"
+  },
+  {
+    "repository": "android_hardware_mediatek",
+    "target_path": "hardware/mediatek"
+  },
+  {
+    "repository": "android_kernel_xiaomi_mt6768",
+    "target_path": "kernel/xiaomi/mt6768"
+  },
+  {
+    "repository": "android_packages_apps_MtkFMRadio",
+    "target_path": "packages/apps/MtkFMRadio"
+  }
+]
