@@ -62,10 +62,10 @@ function blob_fixup {
     case "$1" in
         vendor/lib*/hw/audio.primary.mt6768.so)
             "${PATCHELF}" --add-needed "libshim_audio.so" "${2}"
-            "${PATCHELF}" --replace-needed "libalsautils.so" "libalsautils-v30.so" "${2}"
+            "${PATCHELF}" --replace-needed "libalsautils.so" "libalsautils_legacy.so" "${2}"
             ;;
         vendor/lib*/hw/audio.usb.mt6768.so)
-            "${PATCHELF}" --replace-needed "libalsautils.so" "libalsautils-v30.so" "${2}"
+            "${PATCHELF}" --replace-needed "libalsautils.so" "libalsautils_legacy.so" "${2}"
             ;;
         vendor/lib64/libwifi-hal-mtk.so)
             "$PATCHELF" --set-soname libwifi-hal-mtk.so "${2}"
