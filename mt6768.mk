@@ -358,7 +358,7 @@ PRODUCT_PACKAGES += \
     libshim_beanpod \
     libshim_showlogo \
     libshim_vtservice \
-    libshim_watermark
+    libpiex_shim
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \

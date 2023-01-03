@@ -50,10 +50,3 @@ cc_library_shared {
         "libmediametrics_headers",
     ],
 }
-
-cc_library_shared {
-    name: "libshim_watermark",
-    srcs: ["libshim_watermark.cpp"],
-    shared_libs: ["libpiex"],
-    vendor: true
-}
