@@ -1,0 +1,8 @@
+subdirs = [
+    "*"
+]
+
+hidl_package_root {
+    name: "vendor.goodix",
+    path: "device/xiaomi/mt6768-common/interfaces/goodix",
+}

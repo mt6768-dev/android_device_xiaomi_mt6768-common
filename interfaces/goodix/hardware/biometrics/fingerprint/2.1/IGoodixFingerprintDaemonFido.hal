@@ -1,0 +1,28 @@
+/*
+ * Copyright (C) 2022 The LineageOS Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package vendor.goodix.hardware.biometrics.fingerprint@2.1;
+
+import IGoodixFingerprintDaemonFidoCallback;
+
+interface IGoodixFingerprintDaemonFido {
+    authenticateFido(uint32_t groupId, vec<uint8_t> aaid, vec<uint8_t> finalChallenge) generates (uint32_t ret);
+    getIdList(uint32_t groupId) generates (uint32_t i, vec<uint32_t> arrayList);
+    oneway initCallback(IGoodixFingerprintDaemonFidoCallback callback);
+    invokeFidoCommand(vec<uint8_t> in_buf) generates (uint32_t i, vec<uint8_t> arrayList);
+    isIdValid(uint32_t groupId, uint32_t fingerId) generates (uint32_t ret);
+    stopAuthenticateFido() generates (uint32_t ret);
+};
