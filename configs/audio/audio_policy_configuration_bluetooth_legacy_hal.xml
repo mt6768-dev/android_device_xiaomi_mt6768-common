@@ -80,7 +80,7 @@
                 <mixPort name="primary input" role="sink" maxActiveCount="0">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="8000,16000,32000,44100,48000"
-                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
+                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
                 </mixPort>
                 <mixPort name="mmap_no_irq_in" role="sink" flags="AUDIO_INPUT_FLAG_MMAP_NOIRQ">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
@@ -195,7 +195,7 @@
                 <devicePort tagName="Voice Call In" type="AUDIO_DEVICE_IN_VOICE_CALL" role="source">
                      <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="8000,16000,32000,44100,48000"
-                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
+                             channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
                 </devicePort>
             </devicePorts>
             <!-- route declaration, i.e. list all available sources for a given sink -->
