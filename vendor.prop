@@ -227,6 +227,7 @@ debug.sf.hwc.min.duration=21000000
 debug.sf.disable_client_composition_cache=1
 debug.sf.enable_transaction_tracing=false
 debug.sf.enable_gl_backpressure=1
+debug.sf.predict_hwc_composition_strategy=0
 
 # TEE
 ro.vendor.mtk_tee_gp_support=1
