@@ -244,3 +244,6 @@ vendor.connsys.driver.ready=no
 ro.vendor.mtk_wfd_support=1
 ro.vendor.wlan.gen=gen4m
 ro.vendor.connsys.dedicated.log=1
+
+# Zygote
+zygote.critical_window.minute=10
