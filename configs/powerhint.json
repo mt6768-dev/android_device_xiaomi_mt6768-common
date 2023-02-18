@@ -249,9 +249,9 @@
       "Name": "CPUSchedBoost",
       "Path": "/sys/devices/system/cpu/sched/sched_boost",
       "Values": [
-        "0",
+        "6",
         "3",
-        "6"
+        "0"
       ],
       "ResetOnInit": true
     },
@@ -440,6 +440,12 @@
       "Value": "2000000"
     },
     {
+        "PowerHint": "INTERACTION",
+        "Node": "CPUSchedBoost",
+        "Duration": 0,
+        "Value": "3"
+    },
+    {
       "PowerHint": "INTERACTION",
       "Node": "TASchedtuneBoost",
       "Duration": 0,
@@ -516,6 +522,12 @@
       "Node": "CPULittleClusterMinFreq",
       "Duration": 5000,
       "Value": "1800000"
+    },
+    {
+        "PowerHint": "LAUNCH",
+        "Node": "CPUSchedBoost",
+        "Duration": 5000,
+        "Value": "6"
     },
     {
       "PowerHint": "LAUNCH",
