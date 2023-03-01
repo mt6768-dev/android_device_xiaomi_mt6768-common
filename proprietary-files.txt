@@ -971,7 +971,6 @@ vendor/lib64/vendor.mediatek.hardware.videotelephony@1.0.so
 
 # IMS-System
 bin/vtservice
-etc/apns-conf.xml:product/etc/apns-conf.xml
 etc/init/init.vtservice.rc
 -framework/mediatek-common.jar
 -framework/mediatek-framework.jar
