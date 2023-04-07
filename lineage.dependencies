@@ -10,9 +10,5 @@
   {
     "repository": "android_kernel_xiaomi_mt6768",
     "target_path": "kernel/xiaomi/mt6768"
-  },
-  {
-    "repository": "android_packages_apps_MtkFMRadio",
-    "target_path": "packages/apps/MtkFMRadio"
   }
 ]
