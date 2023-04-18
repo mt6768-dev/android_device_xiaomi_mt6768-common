@@ -43,6 +43,7 @@ cc_library_shared {
         "libgui",
         "libstagefright",
         "libutils",
+        "libbinder",
     ],
     header_libs: [
         "libaudioclient_headers",
