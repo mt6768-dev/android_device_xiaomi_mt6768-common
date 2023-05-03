@@ -29,8 +29,5 @@ vendor.fps_hal.                                         u:object_r:vendor_finger
 # FM Radio
 ro.vendor.mtk_fm_short_antenna_support			u:object_r:vendor_mtk_default_prop:s0
 
-# Power
-vendor.mediatek.powerhal.                               u:object_r:vendor_power_prop:s0
-
 # Thermal
 vendor.sys.thermal.     				u:object_r:thermal_engine_prop:s0

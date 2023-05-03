@@ -26,7 +26,6 @@ allow hal_power_default sysfs_mali:file rw_file_perms;
 
 # Set perfmgr nodes
 allow hal_power_default proc_perfmgr:dir r_dir_perms;
-allow hal_power_default proc_perfmgr:file rw_file_perms;
 allow hal_power_default sysfs_fpsgo:file w_file_perms;
 allow hal_power_default proc_ppm:dir r_dir_perms;
 allow hal_power_default proc_ppm:file rw_file_perms;
