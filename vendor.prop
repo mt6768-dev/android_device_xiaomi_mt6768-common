@@ -91,7 +91,7 @@ ro.vendor.colorpick_adjust=true
 ro.vendor.cabc.enable=true
 
 # FM Radio
-ro.vendor.mtk_fm_short_antenna_support=1
+ro.vendor.builtin_fm_antenna_support=1
 persist.vendor.connsys.fm_chipid=mt6631
 persist.vendor.connsys.fm_short_antenna_support=1
 
