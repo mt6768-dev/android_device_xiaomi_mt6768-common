@@ -113,8 +113,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-service
 
 PRODUCT_PACKAGES += \
-    android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service
+    android.hardware.memtrack-service.mediatek-mali
 
 PRODUCT_PACKAGES += \
     android.hardware.graphics.common@1.2.vendor \

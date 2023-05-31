@@ -420,7 +420,6 @@ vendor/lib/egl/libGLES_meow.so
 vendor/lib/egl/libMEOW_gift.so
 vendor/lib/egl/libMEOW_trace.so
 vendor/lib/hw/dfps.mt6768.so
-vendor/lib/hw/memtrack.mt6768.so
 vendor/lib/hw/vendor.mediatek.hardware.dfps@1.0-impl.so
 vendor/lib/arm.graphics-V1-ndk_platform.so
 vendor/lib/libDefaultFpsActor.so
@@ -448,7 +447,6 @@ vendor/lib64/egl/libMEOW_gift.so
 vendor/lib64/egl/libMEOW_trace.so
 vendor/lib64/hw/dfps.mt6768.so
 vendor/lib64/hw/hwcomposer.mt6768.so
-vendor/lib64/hw/memtrack.mt6768.so
 vendor/lib64/hw/vendor.mediatek.hardware.dfps@1.0-impl.so
 vendor/lib64/arm.graphics-V1-ndk_platform.so
 vendor/lib64/libDefaultFpsActor.so
