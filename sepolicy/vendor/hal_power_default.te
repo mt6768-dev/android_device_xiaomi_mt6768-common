@@ -21,8 +21,8 @@ allow hal_power_default sysfs_mtk_cpufreq:file rw_file_perms;
 
 # Set GPU frequency
 allow hal_power_default sysfs_mtk_gpufreq:file rw_file_perms;
-allow hal_power_default sysfs_mali:dir r_dir_perms;
-allow hal_power_default sysfs_mali:file rw_file_perms;
+allow hal_power_default sysfs_gpu:dir r_dir_perms;
+allow hal_power_default sysfs_gpu:file rw_file_perms;
 
 # Set perfmgr nodes
 allow hal_power_default proc_perfmgr:dir r_dir_perms;

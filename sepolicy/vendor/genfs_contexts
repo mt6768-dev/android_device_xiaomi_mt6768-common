@@ -3,7 +3,7 @@ genfscon sysfs /devices/platform/11012000.spi2/spi_master/spi2/spi2.0/authen_fd 
 genfscon sysfs /devices/platform/fingerprint                                                                                    u:object_r:sysfs_fingerprint:s0
 
 # Graphics
-genfscon sysfs /devices/platform/13040000.mali                                                                                  u:object_r:sysfs_mali:s0
+genfscon sysfs /devices/platform/13040000.mali                                                                                  u:object_r:sysfs_gpu:s0
 
 # Health
 genfscon sysfs /devices/platform/mt_charger/power_supply/ac                                                                     u:object_r:vendor_sysfs_ac_supply:s0
