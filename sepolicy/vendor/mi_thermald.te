@@ -2,7 +2,7 @@ type mi_thermald, domain;
 type mi_thermald_exec, exec_type, vendor_file_type, file_type;
 type thermal_data_file, data_file_type, file_type;
 
-vendor_public_prop(thermal_engine_prop)
+vendor_internal_prop(thermal_engine_prop)
 
 init_daemon_domain(mi_thermald)
 
