@@ -2,7 +2,7 @@ type mi_thermald, domain;
 type mi_thermald_exec, exec_type, vendor_file_type, file_type;
 type thermal_data_file, data_file_type, file_type;
 
-vendor_internal_prop(thermal_engine_prop)
+vendor_internal_prop(vendor_thermal_engine_prop)
 
 init_daemon_domain(mi_thermald)
 
@@ -38,4 +38,4 @@ allow mi_thermald {
   lnk_file
 } rw_file_perms;
 
-set_prop(mi_thermald, thermal_engine_prop)
+set_prop(mi_thermald, vendor_thermal_engine_prop)
