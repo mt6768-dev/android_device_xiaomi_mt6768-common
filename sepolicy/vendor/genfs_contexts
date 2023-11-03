@@ -19,7 +19,6 @@ genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.
 genfscon sysfs /devices/platform/leds-mt65xx/leds/lcd-backlight                           					u:object_r:sysfs_leds:s0
 
 # Performance
-genfscon proc /sys/vm/dirty_writeback_centisecs      										u:object_r:proc_vm_dirty:s0
 genfscon proc /sys/kernel/sched_stune_task_threshold 										u:object_r:proc_sched_stune:s0
 genfscon sysfs /devices/system/cpu/cpufreq/mtk/.cluster_(min|max)_freq                                                          u:object_r:sysfs_mtk_cpufreq:s0
 genfscon sysfs /kernel/gpu/gpu_(min|max)_clock                                                                                  u:object_r:sysfs_mtk_gpufreq:s0

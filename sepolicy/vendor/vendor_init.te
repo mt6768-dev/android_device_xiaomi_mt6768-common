@@ -7,4 +7,3 @@ allow vendor_init vendor_fingerprint_data_file:dir { rw_dir_perms relabelto seta
 allow vendor_init nfc_data_vendor_file:dir { r_dir_perms create_dir_perms };
 
 allow vendor_init proc_sched_stune:file w_file_perms;
-allow vendor_init proc_vm_dirty:file w_file_perms;
