@@ -1,6 +1,0 @@
-get_prop(mtk_hal_audio, system_audio_prop)
-set_prop(mtk_hal_audio, system_audio_prop)
-
-allow mtk_hal_audio persist_data_file:dir { search };
-
-allow mtk_hal_audio self:process execmem;
