@@ -14,6 +14,7 @@ ro.vendor.mtk_nn.option=A,B,C,D,E,F,G,Z
 ro.vendor.mtk_nn_quant_preferred=1
 
 # Audio
+ro.config.vc_call_vol_steps=11
 ro.vendor.mtk_audio_alac_support=1
 ro.vendor.mtk_audio_tuning_tool_ver=V2.2
 ro.vendor.mtk_audio_ape_support=1
