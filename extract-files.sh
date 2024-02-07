@@ -79,6 +79,10 @@ function blob_fixup {
         vendor/lib64/libmtkcam_stdutils.so)
             "${PATCHELF}" --replace-needed "libutils.so" "libutils-v32.so" "${2}"
             ;;
+        vendor/lib*/libaalservice.so|\
+        vendor/lib*/libcam.utils.sensorprovider.so)
+            "$PATCHELF" --add-needed "libshim_sensors.so" "$2"
+            ;;
         vendor/lib64/hw/fingerprint.mt6768.so)
             sed -i 's|\xc0\x03_\xd6\x00\x00\x00\x00\xff\x03\x01\xd1\xfd{\x02\xa9|\xc0\x03_\xd6\x00\x00\x00\x00\xc0\x03_\xd6\xfd{\x02\xa9|g' "${2}"
             ;;
