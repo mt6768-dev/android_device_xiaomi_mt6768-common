@@ -23,6 +23,9 @@
 # NFC
 /dev/nq-nci  												u:object_r:nfc_device:s0
 
+# Power
+/vendor/bin/hw/android\.hardware\.power-service\.xiaomi-libperfmgr                                      u:object_r:hal_power_default_exec:s0
+
 # Thermals
 /vendor/bin/mi_thermald       										u:object_r:mi_thermald_exec:s0
 
