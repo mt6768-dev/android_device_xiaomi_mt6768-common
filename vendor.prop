@@ -248,6 +248,7 @@ persist.vendor.connsys.patch.version=-1
 persist.vendor.connsys.dynamic.dump=0
 vendor.connsys.driver.ready=no
 ro.vendor.mtk_wfd_support=1
+ro.vendor.wlan.chrdev=wmt_chrdev_wifi
 ro.vendor.wlan.gen=gen4m
 ro.vendor.connsys.dedicated.log=1
 
