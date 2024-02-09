@@ -218,6 +218,7 @@ init.userspace_reboot.is_supported=true
 # SurfaceFlinger
 ro.surface_flinger.primary_display_orientation=ORIENTATION_0
 ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
+ro.surface_flinger.enable_frame_rate_override=false
 ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 debug.sf.use_phase_offsets_as_durations=1
 debug.sf.late.sf.duration=30000000
