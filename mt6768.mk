@@ -237,7 +237,7 @@ PRODUCT_PACKAGES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.1-service.mt6768
+    android.hardware.usb-service.mediatek-legacy
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
