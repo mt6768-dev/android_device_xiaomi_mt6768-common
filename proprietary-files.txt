@@ -375,11 +375,11 @@ vendor/lib64/vendor.mediatek.hardware.camera.security@1.0.so
 # Camera Utils - from merlin-user 12 SP1A.210812.016 V13.0.1.0.SJOMIXM release-keys
 vendor/lib64/libmtkcam_stdutils.so|1e800f54452dcd813967df5d22ed70e7553c18d4
 
-# Charger
-bin/kpoc_charger
-etc/init/kpoc_charger.rc
-lib/libshowlogo.so
-lib/libsysenv_system.so
+# Charger - from TECNO-CK9n UP1A.230519.001
+system_ext/bin/kpoc_charger|c4cf83d29dbd25cf0594fff28eb0d0282b0b89a7
+system_ext/etc/init/kpoc_charger.rc|2ce485c39956849bd2294428d801c3c26ec1c040
+system_ext/lib64/libshowlogo.so|3a9775a2f753282b8b8d172869a59d061b76fcd5
+system_ext/lib64/libsysenv_system.so|41a68fd135204efaf7f4c819e39d7a150dcffd55
 
 # IR
 vendor/lib/hw/consumerir.mt6768.so

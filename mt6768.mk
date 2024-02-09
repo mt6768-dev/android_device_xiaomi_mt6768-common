@@ -127,6 +127,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@4.0.vendor
 
 PRODUCT_PACKAGES += \
+    libdrm \
     libdrm.vendor
 
 # fastbootd
@@ -167,6 +168,7 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-service
 
 PRODUCT_PACKAGES += \
+    android.hardware.health-V1-ndk \
     android.hardware.health@2.0
 
 # HIDL
@@ -368,7 +370,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libshim_audio \
     libshim_beanpod \
-    libshim_showlogo \
     libpiex_shim
 
 # Soong namespaces
