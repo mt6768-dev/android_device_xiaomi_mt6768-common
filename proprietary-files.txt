@@ -1,4 +1,4 @@
-# Unpinned blobs from merlin-user 11 RP1A.200720.011 V12.5.4.0.RJOMIXM release-keys
+# Unpinned blobs from lancelot-user 11 RP1A.200720.011 V12.5.6.0.RJCMIXM release-keys
 
 # AEE
 vendor/lib/libaedv.so
