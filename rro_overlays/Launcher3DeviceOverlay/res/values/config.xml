@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <integer name="max_depth_blur_radius">11</integer>
+
+    <dimen name="max_depth_blur_radius_enhanced">15dp</dimen>
+</resources>

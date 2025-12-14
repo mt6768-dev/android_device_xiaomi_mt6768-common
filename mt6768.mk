@@ -143,8 +143,10 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
 PRODUCT_PACKAGES += \
     CarrierConfigOverlayMT6768 \
     FrameworksResOverlayMT6768 \
+    Launcher3DeviceOverlay \
     NcmTetheringOverlay \
-    SettingsOverlayMT6768
+    SettingsOverlayMT6768 \
+    SystemUIOverlayMT6768
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6768
