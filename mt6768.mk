@@ -107,6 +107,9 @@ $(call inherit-product, hardware/mediatek/frameworks/mediatek-frameworks.mk)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/privapp-permissions-com.mediatek.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-com.mediatek.ims.xml
 
+# ION
+$(call soong_config_set_bool,libion,legacy_impl,true)
+
 # IR
 PRODUCT_PACKAGES += \
     android.hardware.ir-service.example
