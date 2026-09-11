@@ -51,6 +51,9 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libcodec2_hidl@1.1.so', 'libcodec2_hidl@1.1-v31.so')
         .replace_needed('libcodec2_hidl@1.2.so', 'libcodec2_hidl@1.2-v31.so')
         .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so'),
+    'vendor/bin/mnld' : blob_fixup()
+        .replace_needed('libsensorndkbridge.so', 'android.hardware.sensors@1.0-convert-shared.so')
+        .replace_needed('libmnl.so', 'libmnl_mtk.so'),
     'vendor/lib64/hw/sensors.mediatek.V2.0.so': blob_fixup()
        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
     'vendor/lib64/libcodec2_hidl@1.0-v31.so': blob_fixup()
@@ -105,7 +108,6 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libutils.so', 'libutils-v32.so')
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
     (
-        'vendor/bin/mnld',
         'vendor/lib64/libaalservice.so',
         'vendor/lib64/librgbwlightsensor.so',
     ): blob_fixup()
@@ -119,7 +121,7 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libvendor.goodix.hardware.biometrics.fingerprint@2.1.so', 'vendor.goodix.hardware.biometrics.fingerprint@2.1.so'),
     'vendor/lib64/libteei_daemon_vfs.so': blob_fixup()
          .add_needed('liblog.so'),
-     'vendor/lib64/libmnl.so' : blob_fixup()
+     'vendor/lib64/libmnl_mtk.so' : blob_fixup()
          .add_needed('libcutils.so'),
     ('vendor/lib/libnvram.so', 'vendor/lib64/libnvram.so', 'vendor/bin/hw/android.hardware.neuralnetworks@1.3-service-mtk-neuron') : blob_fixup()
          .add_needed('libbase_shim.so'),

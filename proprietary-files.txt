@@ -387,7 +387,7 @@ vendor/lib64/libcharon-ss.so
 vendor/lib64/libcrypto-mdapp.so
 vendor/lib64/libcurl-md.so
 vendor/lib64/libhydra.so
-vendor/lib64/libmnl.so
+vendor/lib64/libmnl.so:vendor/lib64/libmnl_mtk.so;FIX_SONAME
 vendor/lib64/libsimaka.so
 vendor/lib64/libssl-mdapp.so
 vendor/lib64/libstrongswan.so
