@@ -78,10 +78,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.memtrack-service.mediatek
 
-# fastbootd
-PRODUCT_PACKAGES += \
-    fastbootd
-
 # Firmware
 COMMON_RECOVERY_TS_FW_PATH := vendor/xiaomi/mt6768-common/proprietary/vendor/firmware
 
