@@ -582,9 +582,7 @@ system_ext/bin/vtservice|4a8759f67cc4f238983c57193d88d1cc13956e06
 system_ext/etc/init/init.vtservice.rc|50a2249906edc06059b443513db47a2ddc0490dc
 system_ext/etc/sysconfig/com.mediatek.ims.config.xml|6899a013c6dfd293b616be7dde19b0f1455ce3a6
 system_ext/framework/mediatek-ims-base.jar:system/framework/mediatek-ims-base.jar;BOOT_JAR|379037af7466fd3a25afd95cedecdfe005afe839
-system_ext/framework/mediatek-ims-common.jar:system/framework/mediatek-ims-common.jar;BOOT_JAR|4795f1d95af9a4956cc460b14287412df26b2a11
 system_ext/framework/mediatek-ims-extension-plugin.jar|a355792e0ad157f927df2a3f9a36c0196e828cd6
-system_ext/framework/mediatek-telecom-common.jar:system/framework/mediatek-telecom-common.jar;BOOT_JAR|8964e6e4796aaeeced9fa0eaf7c658a1d872aa4f
 system_ext/framework/mediatek-telephony-base.jar:system/framework/mediatek-telephony-base.jar;BOOT_JAR|138a5b5600a8a46e8d407d2654bee0c21d742624
 system_ext/lib/libmtk_vt_wrapper.so|4377acf57cc309234157e69c3197bd4d9ea7f691
 system_ext/lib/libvcodec_cap.so|8f16190d071b853d811554b322ba18aa8e5c140b
