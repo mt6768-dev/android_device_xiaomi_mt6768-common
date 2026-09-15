@@ -138,6 +138,7 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
 PRODUCT_PACKAGES += \
     CarrierConfigOverlayMT6768 \
     FrameworksResOverlayMT6768 \
+    NcmTetheringOverlay \
     SettingsOverlayMT6768
 
 # Platform
