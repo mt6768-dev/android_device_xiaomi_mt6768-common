@@ -1,0 +1,205 @@
+From c069fe4dc34a4ed769e063c3140ad91b7264bc07 Mon Sep 17 00:00:00 2001
+From: Elias Ethan Gheeraert <eliasgheeraert@gmail.com>
+Date: Tue, 21 Jul 2026 06:28:56 +0200
+Subject: [PATCH 2/2] MtkRadioExImsIndication: Remove NtTelephony references
+
+---
+ ...Indication$$ExternalSyntheticLambda0.smali |  42 -------
+ .../ims/ril/MtkRadioExImsIndication.smali     | 118 ------------------
+ 2 files changed, 160 deletions(-)
+ delete mode 100644 smali/com/mediatek/ims/ril/MtkRadioExImsIndication$$ExternalSyntheticLambda0.smali
+
+diff --git a/smali/com/mediatek/ims/ril/MtkRadioExImsIndication$$ExternalSyntheticLambda0.smali b/smali/com/mediatek/ims/ril/MtkRadioExImsIndication$$ExternalSyntheticLambda0.smali
+deleted file mode 100644
+index c7dafc2..0000000
+--- a/smali/com/mediatek/ims/ril/MtkRadioExImsIndication$$ExternalSyntheticLambda0.smali
++++ /dev/null
+@@ -1,42 +0,0 @@
+-.class public final synthetic Lcom/mediatek/ims/ril/MtkRadioExImsIndication$$ExternalSyntheticLambda0;
+-.super Ljava/lang/Object;
+-.source "D8$$SyntheticClass"
+-
+-# interfaces
+-.implements Ljava/lang/Runnable;
+-
+-
+-# instance fields
+-.field public final synthetic f$0:Lcom/mediatek/ims/ril/MtkRadioExImsIndication;
+-
+-.field public final synthetic f$1:[I
+-
+-
+-# direct methods
+-.method public synthetic constructor <init>(Lcom/mediatek/ims/ril/MtkRadioExImsIndication;[I)V
+-    .locals 0
+-
+-    .line 0
+-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+-
+-    iput-object p1, p0, Lcom/mediatek/ims/ril/MtkRadioExImsIndication$$ExternalSyntheticLambda0;->f$0:Lcom/mediatek/ims/ril/MtkRadioExImsIndication;
+-
+-    iput-object p2, p0, Lcom/mediatek/ims/ril/MtkRadioExImsIndication$$ExternalSyntheticLambda0;->f$1:[I
+-
+-    return-void
+-.end method
+-
+-
+-# virtual methods
+-.method public final run()V
+-    .locals 2
+-
+-    .line 0
+-    iget-object v0, p0, Lcom/mediatek/ims/ril/MtkRadioExImsIndication$$ExternalSyntheticLambda0;->f$0:Lcom/mediatek/ims/ril/MtkRadioExImsIndication;
+-
+-    iget-object v1, p0, Lcom/mediatek/ims/ril/MtkRadioExImsIndication$$ExternalSyntheticLambda0;->f$1:[I
+-
+-    invoke-static {v0, v1}, Lcom/mediatek/ims/ril/MtkRadioExImsIndication;->$r8$lambda$dGNQvDgxJY8W1R7RurWqeQUxwyU(Lcom/mediatek/ims/ril/MtkRadioExImsIndication;[I)V
+-
+-    return-void
+-.end method
+diff --git a/smali/com/mediatek/ims/ril/MtkRadioExImsIndication.smali b/smali/com/mediatek/ims/ril/MtkRadioExImsIndication.smali
+index 0603b29..2f7337e 100644
+--- a/smali/com/mediatek/ims/ril/MtkRadioExImsIndication.smali
++++ b/smali/com/mediatek/ims/ril/MtkRadioExImsIndication.smali
+@@ -10,14 +10,6 @@
+ 
+ 
+ # direct methods
+-.method public static synthetic $r8$lambda$dGNQvDgxJY8W1R7RurWqeQUxwyU(Lcom/mediatek/ims/ril/MtkRadioExImsIndication;[I)V
+-    .locals 0
+-
+-    invoke-direct {p0, p1}, Lcom/mediatek/ims/ril/MtkRadioExImsIndication;->lambda$notifyNtTelephonyEregrtInfoInd$0([I)V
+-
+-    return-void
+-.end method
+-
+ .method public constructor <init>(Lcom/mediatek/ims/ril/ImsRILAdapter;I)V
+     .locals 0
+     .param p1, "ril"    # Lcom/mediatek/ims/ril/ImsRILAdapter;
+@@ -36,113 +28,6 @@
+     return-void
+ .end method
+ 
+-.method private synthetic lambda$notifyNtTelephonyEregrtInfoInd$0([I)V
+-    .locals 5
+-    .param p1, "info"    # [I
+-
+-    .line 593
+-    nop
+-
+-    .line 594
+-    const-string v0, "nothing.radio.ntphone"
+-
+-    invoke-static {v0}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
+-
+-    move-result-object v0
+-
+-    .line 593
+-    invoke-static {v0}, Lcom/nothing/telephony/INothingTelephony$Stub;->asInterface(Landroid/os/IBinder;)Lcom/nothing/telephony/INothingTelephony;
+-
+-    move-result-object v0
+-
+-    .line 595
+-    .local v0, "ntTelephony":Lcom/nothing/telephony/INothingTelephony;
+-    if-eqz v0, :cond_0
+-
+-    .line 596
+-    new-instance v1, Landroid/os/Bundle;
+-
+-    invoke-direct {v1}, Landroid/os/Bundle;-><init>()V
+-
+-    .line 597
+-    .local v1, "bundleRequest":Landroid/os/Bundle;
+-    const-string v2, "phoneId"
+-
+-    iget v3, p0, Lcom/mediatek/ims/ril/MtkRadioExImsIndication;->mPhoneId:I
+-
+-    invoke-virtual {v1, v2, v3}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
+-
+-    .line 598
+-    const-string v2, "info"
+-
+-    invoke-virtual {v1, v2, p1}, Landroid/os/Bundle;->putIntArray(Ljava/lang/String;[I)V
+-
+-    .line 600
+-    :try_start_0
+-    const-string v2, "notifyERegRT"
+-
+-    invoke-interface {v0, v2, v1}, Lcom/nothing/telephony/INothingTelephony;->generalSetter(Ljava/lang/String;Landroid/os/Bundle;)Landroid/os/Bundle;
+-    :try_end_0
+-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+-
+-    .line 603
+-    goto :goto_0
+-
+-    .line 601
+-    :catch_0
+-    move-exception v2
+-
+-    .line 602
+-    .local v2, "e":Landroid/os/RemoteException;
+-    new-instance v3, Ljava/lang/StringBuilder;
+-
+-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+-
+-    const-string v4, "Exception for notifyERegRT, "
+-
+-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    move-result-object v3
+-
+-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+-
+-    move-result-object v3
+-
+-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    move-result-object v3
+-
+-    const-string v4, "MtkRadioExImsIndication"
+-
+-    invoke-static {v4, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+-
+-    .line 605
+-    .end local v1    # "bundleRequest":Landroid/os/Bundle;
+-    .end local v2    # "e":Landroid/os/RemoteException;
+-    :cond_0
+-    :goto_0
+-    return-void
+-.end method
+-
+-.method private notifyNtTelephonyEregrtInfoInd([I)V
+-    .locals 2
+-    .param p1, "info"    # [I
+-
+-    .line 592
+-    invoke-static {}, Lcom/android/internal/os/BackgroundThread;->getHandler()Landroid/os/Handler;
+-
+-    move-result-object v0
+-
+-    new-instance v1, Lcom/mediatek/ims/ril/MtkRadioExImsIndication$$ExternalSyntheticLambda0;
+-
+-    invoke-direct {v1, p0, p1}, Lcom/mediatek/ims/ril/MtkRadioExImsIndication$$ExternalSyntheticLambda0;-><init>(Lcom/mediatek/ims/ril/MtkRadioExImsIndication;[I)V
+-
+-    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+-
+-    .line 606
+-    return-void
+-.end method
+-
+ 
+ # virtual methods
+ .method public audioIndication(III)V
+@@ -635,9 +520,6 @@
+ 
+     invoke-virtual {v0, v1, p1}, Lcom/mediatek/ims/ril/ImsRILAdapter;->processMtkIndication(II)V
+ 
+-    .line 563
+-    invoke-direct {p0, p2}, Lcom/mediatek/ims/ril/MtkRadioExImsIndication;->notifyNtTelephonyEregrtInfoInd([I)V
+-
+     .line 567
+     new-instance v0, Ljava/lang/StringBuilder;
+ 
+-- 
+2.55.0
+

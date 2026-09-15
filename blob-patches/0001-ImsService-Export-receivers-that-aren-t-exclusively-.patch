@@ -1,48 +1,50 @@
+From 07d7de0d8705f7c8ca3ea75aea0b01d334101c43 Mon Sep 17 00:00:00 2001
+From: bengris32 <bengris32@protonmail.ch>
+Date: Fri, 15 Dec 2023 22:05:40 +0000
+Subject: [PATCH 1/2] ImsService: Export receivers that aren't exclusively
+ registered for system broadcasts
+
+---
+ smali/com/mediatek/ims/ImsConfigManager.smali               | 6 ++++--
+ smali/com/mediatek/ims/MtkSuppServExt.smali                 | 6 ++++--
+ .../mediatek/ims/config/internal/ImsConfigController.smali  | 6 ++++--
+ smali/com/mediatek/ims/internal/ImsVTProviderUtil.smali     | 6 ++++--
+ .../com/mediatek/ims/rcs/MtkRcsCapabilityExchangeImpl.smali | 6 ++++--
+ smali/com/mediatek/wfo/impl/ImsLocationHandler.smali        | 6 ++++--
+ smali/com/mediatek/wfo/impl/MwiService.smali                | 6 ++++--
+ smali/com/mediatek/wfo/impl/WfcHandler.smali                | 6 ++++--
+ smali/com/mediatek/wfo/impl/WifiPdnHandler.smali            | 6 ++++--
+ 9 files changed, 36 insertions(+), 18 deletions(-)
+
 diff --git a/smali/com/mediatek/ims/ImsConfigManager.smali b/smali/com/mediatek/ims/ImsConfigManager.smali
-index f5c9321..d1e39c0 100644
+index 9a9640f..0012455 100644
 --- a/smali/com/mediatek/ims/ImsConfigManager.smali
 +++ b/smali/com/mediatek/ims/ImsConfigManager.smali
-@@ -129,7 +129,7 @@
+@@ -115,7 +115,7 @@
  .end method
  
  .method public constructor <init>(Landroid/content/Context;[Lcom/mediatek/ims/ril/ImsCommandsInterface;)V
--    .locals 3
-+    .locals 4
+-    .locals 2
++    .locals 3
      .param p1, "context"    # Landroid/content/Context;
      .param p2, "imsRILAdapters"    # [Lcom/mediatek/ims/ril/ImsCommandsInterface;
  
-@@ -206,8 +206,10 @@
+@@ -192,7 +192,9 @@
+     .line 149
+     iget-object v1, p0, Lcom/mediatek/ims/ImsConfigManager;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
  
-     invoke-virtual {v1, v2}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
- 
-+    const/4 v3, 0x2
+-    invoke-virtual {p1, v1, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
++    const/4 v2, 0x2
 +
-     .line 155
--    invoke-virtual {p1, v0, v1}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-+    invoke-virtual {p1, v0, v1, v3}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
++    invoke-virtual {p1, v1, v0, v2}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
  
-     .line 157
+     .line 151
      return-void
-diff --git a/smali/com/mediatek/ims/ImsService$MyHandler.smali b/smali/com/mediatek/ims/ImsService$MyHandler.smali
-index 20a5f2e..5ed71c2 100644
---- a/smali/com/mediatek/ims/ImsService$MyHandler.smali
-+++ b/smali/com/mediatek/ims/ImsService$MyHandler.smali
-@@ -2728,7 +2728,9 @@
- 
-     move-result-object v7
- 
--    invoke-virtual {v6, v7, v5}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-+    const/4 v8, 0x2
-+
-+    invoke-virtual {v6, v7, v5, v8}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
- 
-     .line 2829
-     .end local v5    # "filter":Landroid/content/IntentFilter;
 diff --git a/smali/com/mediatek/ims/MtkSuppServExt.smali b/smali/com/mediatek/ims/MtkSuppServExt.smali
-index 2bdb945..aeca6ce 100644
+index f0d0906..d480e0e 100644
 --- a/smali/com/mediatek/ims/MtkSuppServExt.smali
 +++ b/smali/com/mediatek/ims/MtkSuppServExt.smali
-@@ -1644,7 +1644,7 @@
+@@ -1545,7 +1545,7 @@
  .end method
  
  .method private registerBroadcastReceiver()V
@@ -51,7 +53,7 @@ index 2bdb945..aeca6ce 100644
  
      .line 465
      new-instance v0, Landroid/content/IntentFilter;
-@@ -1677,7 +1677,9 @@
+@@ -1578,7 +1578,9 @@
  
      iget-object v2, p0, Lcom/mediatek/ims/MtkSuppServExt;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
  
@@ -63,10 +65,10 @@ index 2bdb945..aeca6ce 100644
      .line 472
      iget-object v1, p0, Lcom/mediatek/ims/MtkSuppServExt;->mContext:Landroid/content/Context;
 diff --git a/smali/com/mediatek/ims/config/internal/ImsConfigController.smali b/smali/com/mediatek/ims/config/internal/ImsConfigController.smali
-index c635d7a..81990ce 100644
+index 7800e3d..e6b5f5e 100644
 --- a/smali/com/mediatek/ims/config/internal/ImsConfigController.smali
 +++ b/smali/com/mediatek/ims/config/internal/ImsConfigController.smali
-@@ -232,7 +232,7 @@
+@@ -267,7 +267,7 @@
  .end method
  
  .method public constructor <init>(Landroid/content/Context;ILcom/mediatek/ims/ril/ImsCommandsInterface;)V
@@ -75,7 +77,7 @@ index c635d7a..81990ce 100644
      .param p1, "context"    # Landroid/content/Context;
      .param p2, "phoneId"    # I
      .param p3, "imsRilAdapter"    # Lcom/mediatek/ims/ril/ImsCommandsInterface;
-@@ -482,7 +482,9 @@
+@@ -514,7 +514,9 @@
  
      iget-object v5, p0, Lcom/mediatek/ims/config/internal/ImsConfigController;->mReceiver:Landroid/content/BroadcastReceiver;
  
@@ -84,13 +86,13 @@ index c635d7a..81990ce 100644
 +
 +    invoke-virtual {v4, v5, v3, v7}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
  
-     .line 155
+     .line 153
      iget-object v4, p0, Lcom/mediatek/ims/config/internal/ImsConfigController;->mRilAdapter:Lcom/mediatek/ims/ril/ImsCommandsInterface;
 diff --git a/smali/com/mediatek/ims/internal/ImsVTProviderUtil.smali b/smali/com/mediatek/ims/internal/ImsVTProviderUtil.smali
-index 4d46d18..54ff4b8 100644
+index 566d92e..f9fb1f7 100644
 --- a/smali/com/mediatek/ims/internal/ImsVTProviderUtil.smali
 +++ b/smali/com/mediatek/ims/internal/ImsVTProviderUtil.smali
-@@ -2330,7 +2330,7 @@
+@@ -1972,7 +1972,7 @@
  .end method
  
  .method public setContextAndInitRefVTPInternal(Landroid/content/Context;)V
@@ -98,8 +100,8 @@ index 4d46d18..54ff4b8 100644
 +    .locals 5
      .param p1, "context"    # Landroid/content/Context;
  
-     .line 981
-@@ -2413,7 +2413,9 @@
+     .line 860
+@@ -2055,7 +2055,9 @@
  
      iget-object v3, p0, Lcom/mediatek/ims/internal/ImsVTProviderUtil;->mFeatureValueReceiver:Lcom/mediatek/ims/internal/ImsVTProviderUtil$FeatureValueReceiver;
  
@@ -108,33 +110,46 @@ index 4d46d18..54ff4b8 100644
 +
 +    invoke-virtual {v2, v3, v0, v4}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
  
-     .line 999
+     .line 878
      .end local v0    # "filter":Landroid/content/IntentFilter;
-@@ -2440,7 +2442,9 @@
+diff --git a/smali/com/mediatek/ims/rcs/MtkRcsCapabilityExchangeImpl.smali b/smali/com/mediatek/ims/rcs/MtkRcsCapabilityExchangeImpl.smali
+index aab7b89..2b0383c 100644
+--- a/smali/com/mediatek/ims/rcs/MtkRcsCapabilityExchangeImpl.smali
++++ b/smali/com/mediatek/ims/rcs/MtkRcsCapabilityExchangeImpl.smali
+@@ -220,7 +220,7 @@
+ .end method
  
-     iget-object v3, p0, Lcom/mediatek/ims/internal/ImsVTProviderUtil;->mSimStateReceiver:Lcom/mediatek/ims/internal/ImsVTProviderUtil$SimStateReceiver;
+ .method public constructor <init>(ILandroid/content/Context;Landroid/telephony/ims/stub/CapabilityExchangeEventListener;)V
+-    .locals 5
++    .locals 6
+     .param p1, "slotId"    # I
+     .param p2, "context"    # Landroid/content/Context;
+     .param p3, "listener"    # Landroid/telephony/ims/stub/CapabilityExchangeEventListener;
+@@ -384,7 +384,9 @@
  
--    invoke-virtual {v2, v3, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+     invoke-direct {v3, v4}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
+ 
+-    invoke-virtual {v1, v2, v3}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 +    const/4 v4, 0x2
 +
-+    invoke-virtual {v2, v3, v0, v4}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
++    invoke-virtual {v1, v2, v3, v4}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
  
-     .line 1007
-     .end local v0    # "intentFilter":Landroid/content/IntentFilter;
+     goto :goto_0
+ 
 diff --git a/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali b/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali
-index 9250f7d..518c6c6 100644
+index be38d55..f960537 100644
 --- a/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali
 +++ b/smali/com/mediatek/wfo/impl/ImsLocationHandler.smali
-@@ -5175,7 +5175,7 @@
+@@ -5253,7 +5253,7 @@
  .end method
  
  .method private registerForBroadcast()V
 -    .locals 3
 +    .locals 4
  
-     .line 1564
+     .line 1445
      new-instance v0, Landroid/content/IntentFilter;
-@@ -5208,7 +5208,9 @@
+@@ -5281,7 +5281,9 @@
  
      iget-object v2, p0, Lcom/mediatek/wfo/impl/ImsLocationHandler;->mReceiver:Landroid/content/BroadcastReceiver;
  
@@ -143,10 +158,10 @@ index 9250f7d..518c6c6 100644
 +
 +    invoke-virtual {v1, v2, v0, v3}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
  
-     .line 1571
+     .line 1450
      return-void
 diff --git a/smali/com/mediatek/wfo/impl/MwiService.smali b/smali/com/mediatek/wfo/impl/MwiService.smali
-index 41aaa15..f6682b3 100644
+index e30abc9..2da05d4 100644
 --- a/smali/com/mediatek/wfo/impl/MwiService.smali
 +++ b/smali/com/mediatek/wfo/impl/MwiService.smali
 @@ -132,7 +132,7 @@
@@ -173,19 +188,19 @@ index 41aaa15..f6682b3 100644
      .line 125
      .end local v2    # "multiSimConfigChanged":Landroid/content/IntentFilter;
 diff --git a/smali/com/mediatek/wfo/impl/WfcHandler.smali b/smali/com/mediatek/wfo/impl/WfcHandler.smali
-index a2fe69a..7da50fc 100644
+index bfdcbf9..8529b1f 100644
 --- a/smali/com/mediatek/wfo/impl/WfcHandler.smali
 +++ b/smali/com/mediatek/wfo/impl/WfcHandler.smali
-@@ -3898,7 +3898,7 @@
+@@ -3312,7 +3312,7 @@
  .end method
  
  .method private registerForBroadcast()V
 -    .locals 3
 +    .locals 4
  
-     .line 662
+     .line 578
      new-instance v0, Landroid/content/IntentFilter;
-@@ -3951,7 +3951,9 @@
+@@ -3350,7 +3350,9 @@
  
      iget-object v2, p0, Lcom/mediatek/wfo/impl/WfcHandler;->mReceiver:Landroid/content/BroadcastReceiver;
  
@@ -194,30 +209,32 @@ index a2fe69a..7da50fc 100644
 +
 +    invoke-virtual {v1, v2, v0, v3}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
  
-     .line 676
+     .line 590
      return-void
 diff --git a/smali/com/mediatek/wfo/impl/WifiPdnHandler.smali b/smali/com/mediatek/wfo/impl/WifiPdnHandler.smali
-index e806430..ac7bbe3 100644
+index bbd29ce..38519cf 100644
 --- a/smali/com/mediatek/wfo/impl/WifiPdnHandler.smali
 +++ b/smali/com/mediatek/wfo/impl/WifiPdnHandler.smali
-@@ -4132,7 +4132,7 @@
+@@ -3544,7 +3544,7 @@
  .end method
  
  .method private registerForBroadcast()V
 -    .locals 3
 +    .locals 4
  
-     .line 851
+     .line 780
      new-instance v0, Landroid/content/IntentFilter;
-@@ -4170,8 +4170,10 @@
+@@ -3582,7 +3582,9 @@
  
      iget-object v2, p0, Lcom/mediatek/wfo/impl/WifiPdnHandler;->mReceiver:Landroid/content/BroadcastReceiver;
  
 -    invoke-virtual {v1, v2, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 +    const/4 v3, 0x2
++
++    invoke-virtual {v1, v2, v0, v3 }, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
  
-+    invoke-virtual {v1, v2, v0, v3}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)Landroid/content/Intent;
-+ 
-     .line 858
+     .line 787
      return-void
- .end method
+-- 
+2.43.0
+
