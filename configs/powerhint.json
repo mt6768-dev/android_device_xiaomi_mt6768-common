@@ -160,7 +160,6 @@
       "Values": [
         "0",
         "25",
-        "50",
         "75",
         "100"
       ],
@@ -243,12 +242,6 @@
     {
       "PowerHint": "INTERACTION",
       "Node": "FGUclampMin",
-      "Duration": 0,
-      "Value": "50"
-    },
-    {
-      "PowerHint": "INTERACTION",
-      "Node": "TAUclampMin",
       "Duration": 0,
       "Value": "50"
     },
