@@ -130,16 +130,22 @@
       "DefaultIndex": 0
     },
     {
+      "Name": "GPUMinFreq",
+      "Path": "/sys/kernel/ged/hal/custom_boost_gpu_freq",
+      "Values": [
+        "0",
+        "2"
+      ],
+      "ResetOnInit": true
+    },
+    {
       "Name": "DRAMOppMin",
       "Path": "/proc/perfmgr/boost_ctrl/dram_ctrl/ddr",
       "Values": [
-        "-1",
         "0",
-        "1",
-        "2"
+        "-1"
       ],
-      "ResetOnInit": true,
-      "DefaultIndex": 0
+      "ResetOnInit": true
     },
     {
       "Name": "FGUclampMin",
@@ -231,7 +237,7 @@
       "PowerHint": "INTERACTION",
       "Node": "CPULittleClusterMinFreq",
       "Duration": 0,
-      "Value": "1275000"
+      "Value": "1500000"
     },
     {
       "PowerHint": "INTERACTION",
@@ -244,6 +250,12 @@
       "Node": "FGUclampMin",
       "Duration": 0,
       "Value": "50"
+    },
+    {
+      "PowerHint": "INTERACTION",
+      "Node": "DRAMOppMin",
+      "Duration": 0,
+      "Value": "0"
     },
     {
       "PowerHint": "LAUNCH",
@@ -267,7 +279,7 @@
       "PowerHint": "LAUNCH",
       "Node": "DRAMOppMin",
       "Duration": 3000,
-      "Value": "1"
+      "Value": "0"
     },
     {
       "PowerHint": "EXPENSIVE_RENDERING",
@@ -286,6 +298,12 @@
       "Node": "GPUSchedMode",
       "Duration": 0,
       "Value": "1"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "GPUMinFreq",
+      "Duration": 0,
+      "Value": "0"
     },
     {
       "PowerHint": "DOUBLE_TAP_TO_WAKE",
